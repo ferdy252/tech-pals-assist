@@ -1,12 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Services from '@/components/Services';
+import About from '@/components/About';
+import Testimonials from '@/components/Testimonials';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Apply animation classes on component mount
+    document.querySelectorAll('.appear-done > *').forEach((el) => {
+      el.classList.add('opacity-0');
+    });
+
+    // Intersection Observer to trigger animations when elements come into view
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <Hero />
+      <Services />
+      <About />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </div>
   );
 };
