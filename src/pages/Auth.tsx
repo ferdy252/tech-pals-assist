@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -31,10 +30,9 @@ const Auth = () => {
         const { error } = await signUp(email, password, fullName);
         if (error) throw error;
         else {
-          toast({
-            title: "Account created!",
-            description: "Please check your email for verification.",
-          });
+          // Redirect to verification pending page with email in state
+          navigate('/verification-pending', { state: { email } });
+          return; // Early return to prevent the toast from showing
         }
       }
     } catch (error: any) {
@@ -52,12 +50,12 @@ const Auth = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <div className="flex justify-center mb-6">
-          <a href="/" className="flex items-center space-x-2 text-xl font-semibold">
+          <Link to="/" className="flex items-center space-x-2 text-xl font-semibold">
             <Computer className="h-6 w-6 text-blue-500" />
             <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
               TechPals
             </span>
-          </a>
+          </Link>
         </div>
         
         <h2 className="text-2xl font-bold text-center mb-6">
@@ -102,6 +100,13 @@ const Auth = () => {
               placeholder="••••••••"
               className="mb-2"
             />
+            {isLogin && (
+              <div className="text-right">
+                <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
+            )}
           </div>
           
           <Button type="submit" className="w-full" disabled={loading}>

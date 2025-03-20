@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#f0f4f8" />
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a5568">Computer Repair</text>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#718096">Tech Pals - Scranton, PA</text>
+  
+  <!-- Computer Icon -->
+  <rect x="300" y="140" width="200" height="120" rx="5" fill="none" stroke="#3182ce" stroke-width="8"/>
+  <rect x="340" y="260" width="120" height="10" rx="2" fill="none" stroke="#3182ce" stroke-width="8"/>
+  <rect x="320" y="160" width="160" height="80" fill="#e2e8f0" stroke="#3182ce" stroke-width="2"/>
+  <circle cx="400" cy="280" r="5" fill="#3182ce"/>
+  
+  <!-- Tools -->
+  <path d="M480,130 L500,110 L510,120 L490,140 Z" fill="#3182ce"/>
+  <path d="M290,130 L270,110 L260,120 L280,140 Z" fill="#3182ce"/>
+</svg>

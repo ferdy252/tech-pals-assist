@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
 
@@ -71,7 +70,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">Phone</h4>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">(570) 535-2472</p>
                     <p className="text-sm text-gray-500 mt-1">Available Mon-Fri, 9am-6pm</p>
                   </div>
                 </div>
@@ -82,7 +81,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">Email</h4>
-                    <p className="text-gray-600">support@techpals.com</p>
+                    <p className="text-gray-600">support@techpals.info</p>
                     <p className="text-sm text-gray-500 mt-1">We'll respond within 24 hours</p>
                   </div>
                 </div>
@@ -93,7 +92,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">Location</h4>
-                    <p className="text-gray-600">123 Tech Street, San Francisco, CA 94107</p>
+                    <p className="text-gray-600">123 Tech Street, Scranton, PA 18503</p>
                     <p className="text-sm text-gray-500 mt-1">We also offer remote support</p>
                   </div>
                 </div>
@@ -191,10 +190,14 @@ const Contact = () => {
                         required
                       >
                         <option value="">Select a service</option>
-                        <option value="smartphone-repair">Smartphone Repair</option>
-                        <option value="computer-troubleshooting">Computer Troubleshooting</option>
+                        <option value="computer-repair">Computer Repair</option>
+                        <option value="mobile-support">Mobile Device Support</option>
                         <option value="network-setup">Home Network Setup</option>
+                        <option value="security-solutions">Security Solutions</option>
+                        <option value="data-recovery">Data Recovery</option>
+                        <option value="hardware-upgrades">Hardware Upgrades</option>
                         <option value="tech-consultation">Tech Consultation</option>
+                        <option value="remote-support">Remote Support</option>
                         <option value="other">Other</option>
                       </select>
                     </div>

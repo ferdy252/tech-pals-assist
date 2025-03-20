@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -10,7 +9,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
-import { CalendarClock, Clock, Edit, FileText, User } from 'lucide-react';
+import { CalendarClock, Clock, Edit, FileText, User, Calendar, X } from 'lucide-react';
+import { format } from 'date-fns';
 
 type ServiceRequest = {
   id: string;
@@ -20,6 +20,18 @@ type ServiceRequest = {
   status: string;
   created_at: string;
   updated_at: string;
+};
+
+type Appointment = {
+  id: string;
+  user_id: string;
+  service_id: string;
+  service_name: string;
+  appointment_date: string;
+  duration: number;
+  issue_description: string;
+  status: string;
+  created_at: string;
 };
 
 type Profile = {
@@ -32,10 +44,13 @@ type Profile = {
 const Dashboard = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState('requests');
+  const [activeTab, setActiveTab] = useState(location.state?.activeTab || 'requests');
   const [serviceRequests, setServiceRequests] = useState<ServiceRequest[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingAppointments, setLoadingAppointments] = useState(true);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
@@ -48,6 +63,7 @@ const Dashboard = () => {
         const { data, error } = await supabase
           .from('service_requests')
           .select('*')
+          .eq('user_id', user?.id)
           .order('created_at', { ascending: false });
         
         if (error) throw error;
@@ -61,6 +77,79 @@ const Dashboard = () => {
         });
       } finally {
         setLoading(false);
+      }
+    };
+
+    const fetchAppointments = async () => {
+      if (!user) return;
+      
+      try {
+        // Check if appointments table exists using a more generic approach
+        const { error: tableError } = await supabase.rpc('check_table_exists', { table_name: 'appointments' })
+          .single();
+        
+        // If table doesn't exist or RPC function doesn't exist, we'll just show empty state
+        if (tableError) {
+          console.log('Appointments table may not exist yet');
+          setAppointments([]);
+          setLoadingAppointments(false);
+          return;
+        }
+        
+        // If table exists, fetch appointments
+        const { data, error } = await supabase.rpc('get_user_appointments', { user_id: user.id });
+        
+        if (error) {
+          // Fallback to direct query if RPC doesn't exist
+          try {
+            const { data: directData, error: directError } = await supabase
+              .from('appointments')
+              .select('*')
+              .eq('user_id', user.id)
+              .order('appointment_date', { ascending: true });
+            
+            if (directError) throw directError;
+            
+            // Map the data to our Appointment type
+            const mappedAppointments: Appointment[] = (directData || []).map((appt: any) => ({
+              id: appt.id,
+              user_id: appt.user_id,
+              service_id: appt.service_id,
+              service_name: appt.service_name,
+              appointment_date: appt.appointment_date,
+              duration: appt.duration,
+              issue_description: appt.issue_description,
+              status: appt.status,
+              created_at: appt.created_at
+            }));
+            
+            setAppointments(mappedAppointments);
+          } catch (directError: any) {
+            console.error('Error in direct appointment fetch:', directError.message);
+            setAppointments([]);
+          }
+        } else {
+          // Map the data from RPC call
+          const mappedAppointments: Appointment[] = (data || []).map((appt: any) => ({
+            id: appt.id,
+            user_id: appt.user_id,
+            service_id: appt.service_id,
+            service_name: appt.service_name,
+            appointment_date: appt.appointment_date,
+            duration: appt.duration,
+            issue_description: appt.issue_description,
+            status: appt.status,
+            created_at: appt.created_at
+          }));
+          
+          setAppointments(mappedAppointments);
+        }
+      } catch (error: any) {
+        console.error('Error fetching appointments:', error.message);
+        // Don't show error toast as the table might not exist yet
+        setAppointments([]);
+      } finally {
+        setLoadingAppointments(false);
       }
     };
 
@@ -86,6 +175,7 @@ const Dashboard = () => {
 
     if (user) {
       fetchServiceRequests();
+      fetchAppointments();
       fetchProfile();
     }
   }, [user, toast]);
@@ -124,6 +214,49 @@ const Dashboard = () => {
       setUpdatingProfile(false);
     }
   };
+  
+  const handleCancelAppointment = async (appointmentId: string) => {
+    try {
+      // Try using RPC first
+      const { error: rpcError } = await supabase.rpc('cancel_appointment', { appointment_id: appointmentId });
+      
+      if (rpcError) {
+        // Fallback to direct update if RPC doesn't exist
+        const { error } = await supabase.rpc('update_appointment_status', {
+          p_appointment_id: appointmentId,
+          p_status: 'cancelled'
+        });
+        
+        if (error) {
+          // Last resort: direct update
+          const { error: directError } = await supabase
+            .from('appointments')
+            .update({ status: 'cancelled' })
+            .eq('id', appointmentId);
+          
+          if (directError) throw directError;
+        }
+      }
+      
+      // Update local state
+      setAppointments(appointments.map(appointment => 
+        appointment.id === appointmentId 
+          ? { ...appointment, status: 'cancelled' } 
+          : appointment
+      ));
+      
+      toast({
+        title: 'Appointment cancelled',
+        description: 'Your appointment has been cancelled successfully.',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Error cancelling appointment',
+        description: error.message,
+        variant: 'destructive',
+      });
+    }
+  };
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -145,6 +278,7 @@ const Dashboard = () => {
       case 'completed':
         return 'bg-green-100 text-green-800';
       case 'in progress':
+      case 'scheduled':
         return 'bg-blue-100 text-blue-800';
       case 'cancelled':
         return 'bg-red-100 text-red-800';
@@ -264,19 +398,77 @@ const Dashboard = () => {
             
             <TabsContent value="appointments">
               <Card>
-                <CardHeader>
-                  <CardTitle>Upcoming Appointments</CardTitle>
-                  <CardDescription>
-                    View and manage your scheduled appointments
-                  </CardDescription>
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <div>
+                    <CardTitle>Upcoming Appointments</CardTitle>
+                    <CardDescription>
+                      View and manage your scheduled appointments
+                    </CardDescription>
+                  </div>
+                  <Button onClick={() => navigate('/book-appointment')}>
+                    <Calendar className="h-4 w-4 mr-2" />
+                    Book Appointment
+                  </Button>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-center py-8 border rounded-lg bg-gray-50">
-                    <p className="text-gray-500">No upcoming appointments.</p>
-                    <p className="text-sm text-gray-400 mt-2">
-                      Appointments will be scheduled after your service request is reviewed.
-                    </p>
-                  </div>
+                  {loadingAppointments ? (
+                    <div className="flex justify-center py-8">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                    </div>
+                  ) : appointments.length > 0 ? (
+                    <div className="overflow-x-auto">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>Service</TableHead>
+                            <TableHead>Date & Time</TableHead>
+                            <TableHead>Duration</TableHead>
+                            <TableHead>Status</TableHead>
+                            <TableHead>Actions</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {appointments.map((appointment) => (
+                            <TableRow key={appointment.id}>
+                              <TableCell className="font-medium">{appointment.service_name}</TableCell>
+                              <TableCell>
+                                <div>{formatDate(appointment.appointment_date)}</div>
+                                <div className="text-xs text-gray-500">{formatTime(appointment.appointment_date)}</div>
+                              </TableCell>
+                              <TableCell>{appointment.duration} min</TableCell>
+                              <TableCell>
+                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(appointment.status)}`}>
+                                  {appointment.status}
+                                </span>
+                              </TableCell>
+                              <TableCell>
+                                {appointment.status === 'scheduled' && (
+                                  <Button 
+                                    variant="outline" 
+                                    size="sm"
+                                    onClick={() => handleCancelAppointment(appointment.id)}
+                                  >
+                                    <X className="h-4 w-4 mr-1" />
+                                    Cancel
+                                  </Button>
+                                )}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 border rounded-lg bg-gray-50">
+                      <p className="text-gray-500">No upcoming appointments.</p>
+                      <Button 
+                        onClick={() => navigate('/book-appointment')} 
+                        className="mt-4"
+                      >
+                        Book Your First Appointment
+                      </Button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>

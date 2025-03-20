@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { user, loading, isEmailVerified } = useAuth();
   
   if (loading) {
     return (
@@ -16,6 +15,12 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   
   if (!user) {
     return <Navigate to="/auth" replace />;
+  }
+  
+  // Check if email is verified
+  if (!isEmailVerified) {
+    // Redirect to verification pending page with email in state
+    return <Navigate to="/verification-pending" state={{ email: user.email }} replace />;
   }
   
   return <>{children}</>;

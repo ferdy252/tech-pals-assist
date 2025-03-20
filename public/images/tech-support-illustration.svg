@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#ffffff" opacity="0.1" />
+  <text x="300" y="100" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#ffffff">Tech Support Illustration</text>
+  
+  <!-- Person with computer -->
+  <circle cx="250" cy="200" r="40" fill="#ffffff" opacity="0.8" />
+  <rect x="230" y="240" width="40" height="60" rx="5" fill="#ffffff" opacity="0.8" />
+  
+  <!-- Computer screen -->
+  <rect x="320" y="180" width="80" height="60" rx="5" fill="#ffffff" opacity="0.8" />
+  <rect x="350" y="240" width="20" height="10" fill="#ffffff" opacity="0.8" />
+  <rect x="330" y="250" width="60" height="5" rx="2" fill="#ffffff" opacity="0.8" />
+  
+  <!-- Connection lines -->
+  <line x1="270" y1="220" x2="320" y2="220" stroke="#ffffff" stroke-width="3" opacity="0.8" />
+  
+  <!-- Support icons -->
+  <circle cx="200" cy="150" r="15" fill="#ffffff" opacity="0.6" />
+  <circle cx="350" cy="130" r="15" fill="#ffffff" opacity="0.6" />
+  <circle cx="400" cy="200" r="15" fill="#ffffff" opacity="0.6" />
+  
+  <!-- Connection lines to icons -->
+  <line x1="250" y1="180" x2="200" y2="150" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+  <line x1="270" y1="190" x2="350" y2="130" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+  <line x1="350" y1="200" x2="385" y2="200" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+  
+  <!-- Decorative elements -->
+  <path d="M150,300 Q300,200 450,300" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+  <path d="M150,320 Q300,220 450,320" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+</svg>

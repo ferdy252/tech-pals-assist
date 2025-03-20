@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Session, User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -8,9 +7,11 @@ type AuthContextType = {
   session: Session | null;
   user: User | null;
   loading: boolean;
+  isEmailVerified: boolean;
   signIn: (email: string, password: string) => Promise<{ error: any | null }>;
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: any | null }>;
   signOut: () => Promise<void>;
+  resendVerificationEmail: (email: string) => Promise<{ error: any | null }>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,6 +20,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +29,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       (event, currentSession) => {
         setSession(currentSession);
         setUser(currentSession?.user ?? null);
+        
+        // Check if email is verified
+        if (currentSession?.user) {
+          setIsEmailVerified(currentSession.user.email_confirmed_at !== null);
+        } else {
+          setIsEmailVerified(false);
+        }
+        
         setLoading(false);
       }
     );
@@ -35,6 +45,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
       setSession(currentSession);
       setUser(currentSession?.user ?? null);
+      
+      // Check if email is verified
+      if (currentSession?.user) {
+        setIsEmailVerified(currentSession.user.email_confirmed_at !== null);
+      }
+      
       setLoading(false);
     });
 
@@ -59,11 +75,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         data: {
           full_name: fullName,
         },
+        emailRedirectTo: `${window.location.origin}/verify-email`,
       },
     });
-    if (!error) {
-      navigate('/dashboard');
-    }
+    
+    // Don't navigate to dashboard immediately after signup
+    // User needs to verify email first
+    return { error };
+  };
+
+  const resendVerificationEmail = async (email: string) => {
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/verify-email`,
+      },
+    });
     return { error };
   };
 
@@ -73,7 +101,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, loading, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ 
+      session, 
+      user, 
+      loading, 
+      isEmailVerified,
+      signIn, 
+      signUp, 
+      signOut,
+      resendVerificationEmail
+    }}>
       {children}
     </AuthContext.Provider>
   );

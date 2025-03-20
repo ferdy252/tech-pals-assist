@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Computer, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -26,11 +25,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/', isLink: true },
+    { name: 'Services', href: '/services', isLink: true },
+    { name: 'About', href: '/about', isLink: true },
+    { name: 'Contact', href: '/contact', isLink: true },
   ];
 
   return (
@@ -58,13 +56,23 @@ const Navbar = () => {
         {/* Desktop navigation */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-700 hover:text-blue-500 transition-colors duration-200 text-sm font-medium"
-            >
-              {item.name}
-            </a>
+            item.isLink ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="text-gray-700 hover:text-blue-500 transition-colors duration-200 text-sm font-medium"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 hover:text-blue-500 transition-colors duration-200 text-sm font-medium"
+              >
+                {item.name}
+              </a>
+            )
           ))}
         </div>
 
@@ -112,14 +120,25 @@ const Navbar = () => {
       >
         <div className="flex flex-col space-y-6">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item.name}
-            </a>
+            item.isLink ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            )
           ))}
           
           {user ? (

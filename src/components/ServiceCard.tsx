@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -10,9 +10,17 @@ interface ServiceCardProps {
   features: string[];
   index: number;
   price?: string;
+  slug?: string;
 }
 
-const ServiceCard = ({ icon, title, description, features, index, price }: ServiceCardProps) => {
+const ServiceCard = ({ icon, title, description, features, index, price, slug }: ServiceCardProps) => {
+  const navigate = useNavigate();
+
+  const handleBookService = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent the parent Link from navigating
+    navigate('/contact');
+  };
+
   return (
     <div 
       className={cn(
@@ -59,12 +67,12 @@ const ServiceCard = ({ icon, title, description, features, index, price }: Servi
           </div>
         )}
         
-        <a 
-          href="#contact" 
+        <button 
+          onClick={handleBookService}
           className="inline-block w-full py-3 px-6 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 font-medium"
         >
           Book This Service
-        </a>
+        </button>
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
