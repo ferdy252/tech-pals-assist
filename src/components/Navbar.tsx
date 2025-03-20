@@ -2,10 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Computer, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,8 +44,8 @@ const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a 
-          href="#home" 
+        <Link 
+          to="/" 
           className="flex items-center space-x-2 text-xl font-semibold"
           onClick={() => setIsMobileMenuOpen(false)}
         >
@@ -49,7 +53,7 @@ const Navbar = () => {
           <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
             TechPals
           </span>
-        </a>
+        </Link>
 
         {/* Desktop navigation */}
         <div className="hidden md:flex space-x-8">
@@ -64,14 +68,22 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Contact button (desktop) */}
-        <div className="hidden md:block">
-          <a
-            href="#contact"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-in-out transform hover:scale-105 shadow-sm"
-          >
-            Get in Touch
-          </a>
+        {/* Auth buttons (desktop) */}
+        <div className="hidden md:flex items-center space-x-4">
+          {user ? (
+            <>
+              <Link to="/dashboard">
+                <Button variant="ghost" size="sm">Dashboard</Button>
+              </Link>
+              <Button variant="ghost" size="sm" onClick={signOut}>Sign Out</Button>
+            </>
+          ) : (
+            <Link to="/auth">
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-in-out transform hover:scale-105 shadow-sm">
+                Sign In / Register
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -109,13 +121,35 @@ const Navbar = () => {
               {item.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full text-center font-medium transition-all duration-200 shadow-sm"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Get in Touch
-          </a>
+          
+          {user ? (
+            <>
+              <Link 
+                to="/dashboard" 
+                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={() => {
+                  signOut();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200 text-left"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/auth"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full text-center font-medium transition-all duration-200 shadow-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Sign In / Register
+            </Link>
+          )}
         </div>
       </div>
     </nav>
