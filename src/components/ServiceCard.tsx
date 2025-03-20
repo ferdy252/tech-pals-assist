@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
@@ -20,7 +19,6 @@ const ServiceCard = ({ icon, title, description, features, index, price }: Servi
         "hover:border-blue-200/50 hover:shadow-lg"
       )}
       style={{ 
-        animationDelay: `${index * 0.15}s`,
         transform: 'translateY(20px)',
         opacity: 0,
         animation: 'slideUp 0.6s ease-out forwards',

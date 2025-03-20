@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Clock, Tool, Award } from 'lucide-react';
+import { Shield, Clock, Wrench, Award } from 'lucide-react';
 
 const About = () => {
   const features = [
@@ -15,7 +15,7 @@ const About = () => {
       description: 'We understand the urgency of tech problems and pride ourselves on our quick response and resolution times.'
     },
     {
-      icon: <Tool className="h-8 w-8 text-blue-500" />,
+      icon: <Wrench className="h-8 w-8 text-blue-500" />,
       title: 'Quality Service',
       description: 'Using only the best tools and parts, we ensure that all repairs and services meet the highest standards.'
     },
