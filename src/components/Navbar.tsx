@@ -4,11 +4,15 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +29,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', href: '/', isLink: true },
-    { name: 'Services', href: '/services', isLink: true },
-    { name: 'About', href: '/about', isLink: true },
-    { name: 'Contact', href: '/contact', isLink: true },
+    { name: t('navbar.home'), href: '/', isLink: true },
+    { name: t('navbar.services'), href: '/services', isLink: true },
+    { name: t('navbar.about'), href: '/about', isLink: true },
+    { name: t('navbar.contact'), href: '/contact', isLink: true },
   ];
 
   return (
@@ -36,7 +40,7 @@ const Navbar = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6 md:px-12',
         {
-          'bg-white/90 shadow-sm backdrop-blur-md': isScrolled,
+          'bg-white/90 dark:bg-gray-900/90 shadow-sm backdrop-blur-md': isScrolled,
           'bg-transparent': !isScrolled,
         }
       )}
@@ -49,7 +53,7 @@ const Navbar = () => {
         >
           <Computer className="h-6 w-6 text-blue-500" />
           <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
-            TechPals
+            {t('common.companyName')}
           </span>
         </Link>
 
@@ -60,7 +64,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-blue-500 transition-colors duration-200 text-sm font-medium"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
               >
                 {item.name}
               </Link>
@@ -68,7 +72,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-500 transition-colors duration-200 text-sm font-medium"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
               >
                 {item.name}
               </a>
@@ -76,42 +80,48 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Auth buttons (desktop) */}
+        {/* Auth buttons and theme toggle (desktop) */}
         <div className="hidden md:flex items-center space-x-4">
+          <LanguageSwitcher />
+          <ThemeToggle />
           {user ? (
             <>
               <Link to="/dashboard">
-                <Button variant="ghost" size="sm">Dashboard</Button>
+                <Button variant="ghost" size="sm">{t('navbar.dashboard')}</Button>
               </Link>
-              <Button variant="ghost" size="sm" onClick={signOut}>Sign Out</Button>
+              <Button variant="ghost" size="sm" onClick={signOut}>{t('navbar.signOut')}</Button>
             </>
           ) : (
             <Link to="/auth">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                Sign In / Register
+                {t('navbar.signInRegister')}
               </Button>
             </Link>
           )}
         </div>
 
         {/* Mobile menu button */}
-        <button 
-          className="md:hidden text-gray-700 focus:outline-none"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
+        <div className="flex items-center space-x-2 md:hidden">
+          <LanguageSwitcher />
+          <ThemeToggle />
+          <button 
+            className="text-gray-700 dark:text-gray-200 focus:outline-none"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       <div
         className={cn(
-          'fixed inset-0 bg-white z-40 pt-20 px-6 transform transition-transform duration-300 ease-in-out md:hidden',
+          'fixed inset-0 bg-white dark:bg-gray-900 z-40 pt-20 px-6 transform transition-transform duration-300 ease-in-out md:hidden',
           {
             'translate-x-0': isMobileMenuOpen,
             'translate-x-full': !isMobileMenuOpen,
@@ -124,7 +134,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 text-lg font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -133,7 +143,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 text-lg font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -145,19 +155,19 @@ const Navbar = () => {
             <>
               <Link 
                 to="/dashboard" 
-                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 text-lg font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Dashboard
+                {t('navbar.dashboard')}
               </Link>
               <button
                 onClick={() => {
                   signOut();
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-gray-700 hover:text-blue-500 text-lg font-medium transition-colors duration-200 text-left"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 text-lg font-medium transition-colors duration-200 text-left"
               >
-                Sign Out
+                {t('navbar.signOut')}
               </button>
             </>
           ) : (
@@ -166,7 +176,7 @@ const Navbar = () => {
               className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full text-center font-medium transition-all duration-200 shadow-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign In / Register
+              {t('navbar.signInRegister')}
             </Link>
           )}
         </div>

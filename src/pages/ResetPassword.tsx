@@ -99,20 +99,20 @@ const ResetPassword = () => {
 
   if (validatingToken) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-        <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
+        <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 p-8 text-center transition-colors duration-300">
           <div className="flex justify-center mb-6">
             <Link to="/" className="flex items-center space-x-2 text-xl font-semibold">
-              <Computer className="h-6 w-6 text-blue-500" />
+              <Computer className="h-6 w-6 text-blue-500 dark:text-blue-400" />
               <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
                 TechPals
               </span>
             </Link>
           </div>
           <div className="flex flex-col items-center space-y-4">
-            <Loader2 className="h-12 w-12 text-blue-500 animate-spin" />
-            <h2 className="text-2xl font-bold">Validating your request...</h2>
-            <p className="text-gray-600">Please wait while we verify your password reset link.</p>
+            <Loader2 className="h-12 w-12 text-blue-500 dark:text-blue-400 animate-spin" />
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Validating your request...</h2>
+            <p className="text-gray-600 dark:text-gray-300">Please wait while we verify your password reset link.</p>
           </div>
         </div>
       </div>
@@ -121,33 +121,33 @@ const ResetPassword = () => {
 
   if (!tokenValid) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-        <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
+        <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 p-8 text-center transition-colors duration-300">
           <div className="flex justify-center mb-6">
             <Link to="/" className="flex items-center space-x-2 text-xl font-semibold">
-              <Computer className="h-6 w-6 text-blue-500" />
+              <Computer className="h-6 w-6 text-blue-500 dark:text-blue-400" />
               <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
                 TechPals
               </span>
             </Link>
           </div>
           <div className="flex flex-col items-center space-y-4">
-            <KeyRound className="h-12 w-12 text-red-500" />
-            <h2 className="text-2xl font-bold text-red-600">Invalid or Expired Link</h2>
-            <p className="text-gray-600 mb-4">
+            <KeyRound className="h-12 w-12 text-red-500 dark:text-red-400" />
+            <h2 className="text-2xl font-bold text-red-600 dark:text-red-400">Invalid or Expired Link</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               This password reset link is invalid or has expired. Please request a new password reset link.
             </p>
             <div className="space-y-3 w-full">
               <Button 
                 onClick={() => navigate('/auth')} 
-                className="w-full bg-blue-500 hover:bg-blue-600"
+                className="w-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
                 Return to Sign In
               </Button>
               <Button 
                 onClick={() => navigate('/contact')} 
                 variant="outline" 
-                className="w-full"
+                className="w-full border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Contact Support
               </Button>
@@ -159,22 +159,22 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
+      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 p-8 transition-colors duration-300">
         <div className="flex justify-center mb-6">
           <Link to="/" className="flex items-center space-x-2 text-xl font-semibold">
-            <Computer className="h-6 w-6 text-blue-500" />
+            <Computer className="h-6 w-6 text-blue-500 dark:text-blue-400" />
             <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
               TechPals
             </span>
           </Link>
         </div>
         
-        <h2 className="text-2xl font-bold text-center mb-6">Reset Your Password</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">Reset Your Password</h2>
         
         <form onSubmit={handleResetPassword} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="password">New Password</Label>
+            <Label htmlFor="password" className="text-gray-700 dark:text-gray-300">New Password</Label>
             <Input
               id="password"
               type="password"
@@ -182,11 +182,12 @@ const ResetPassword = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="••••••••"
+              className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm New Password</Label>
+            <Label htmlFor="confirmPassword" className="text-gray-700 dark:text-gray-300">Confirm New Password</Label>
             <Input
               id="confirmPassword"
               type="password"
@@ -194,17 +195,17 @@ const ResetPassword = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
               placeholder="••••••••"
-              className="mb-2"
+              className="mb-2 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
             />
           </div>
           
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" disabled={loading}>
             {loading ? 'Resetting Password...' : 'Reset Password'}
           </Button>
         </form>
         
         <div className="mt-6 text-center">
-          <Link to="/auth" className="text-sm text-blue-600 hover:underline">
+          <Link to="/auth" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
             Return to Sign In
           </Link>
         </div>

@@ -1,0 +1,368 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "dashboard": "Panel",
+    "signOut": "Cerrar Sesión",
+    "signInRegister": "Iniciar Sesión / Registrarse"
+  },
+  "hero": {
+    "tagline": "Servicios Profesionales de Soporte Técnico",
+    "title": "Soluciones Tecnológicas Expertas",
+    "titleHighlight": "Cuando Las Necesitas",
+    "description": "Ofrecemos soporte técnico rápido y confiable para todos tus dispositivos. Desde reparaciones de smartphones hasta configuraciones de redes domésticas, te cubrimos.",
+    "exploreServices": "Explorar Servicios",
+    "getInTouch": "Contáctanos",
+    "services": {
+      "smartphoneRepairs": "Reparación de Smartphones",
+      "computerTroubleshooting": "Solución de Problemas de Computadoras",
+      "networkSetup": "Configuración de Redes",
+      "techConsultations": "Consultas Técnicas"
+    },
+    "techSupport": "Soporte Técnico",
+    "expertAssistance": "Asistencia experta para todas tus necesidades tecnológicas"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "description": "Tech Pals ofrece servicios de soporte técnico asequibles en Scranton, PA. Llámanos al (570) 535-2472 para todas tus necesidades tecnológicas.",
+    "viewAll": "Ver Todos los Servicios",
+    "bookService": "Reservar Este Servicio",
+    "perService": "por servicio",
+    "items": {
+      "computerRepair": {
+        "title": "Reparación de Computadoras",
+        "description": "Servicios asequibles de reparación para computadoras de escritorio y portátiles.",
+        "features": [
+          "Eliminación de virus y malware",
+          "Diagnóstico de hardware",
+          "Solución de problemas de software",
+          "Optimización del sistema",
+          "Soporte para Windows y Mac"
+        ],
+        "price": "Desde $45"
+      },
+      "mobileSupport": {
+        "title": "Soporte para Dispositivos Móviles",
+        "description": "Ayuda experta con smartphones y tablets de todas las marcas.",
+        "features": [
+          "Solución de problemas de pantalla",
+          "Problemas de batería",
+          "Actualizaciones de software",
+          "Transferencia de datos",
+          "Configuración de aplicaciones"
+        ],
+        "price": "Desde $35"
+      },
+      "networkSetup": {
+        "title": "Configuración de Red Doméstica",
+        "description": "Haz que tu red doméstica funcione sin problemas con nuestro servicio de configuración experto.",
+        "features": [
+          "Optimización de Wi-Fi",
+          "Configuración de router",
+          "Conectividad de dispositivos",
+          "Seguridad de red",
+          "Configuración de impresora"
+        ],
+        "price": "Desde $65"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Lo Que Dicen Nuestros Clientes",
+    "description": "No solo tomes nuestra palabra — escucha a nuestros clientes satisfechos sobre su experiencia con TechPals.",
+    "items": [
+      {
+        "content": "TechPals solucionó los problemas de rendimiento de mi laptop en una sola visita. ¡Profesional, rápido y asequible!",
+        "author": "Sarah Johnson",
+        "position": "Propietaria de Pequeño Negocio"
+      },
+      {
+        "content": "Después de luchar con mi red doméstica durante meses, TechPals configuró todo perfectamente. Mi Wi-Fi nunca ha sido más confiable.",
+        "author": "Michael Chen",
+        "position": "Trabajador Remoto"
+      },
+      {
+        "content": "Me ayudaron a elegir los dispositivos perfectos para mis necesidades y configuraron todo. Su servicio de consulta me ahorró tiempo y dinero.",
+        "author": "Emily Rodriguez",
+        "position": "Profesora"
+      }
+    ]
+  },
+  "footer": {
+    "description": "Servicios profesionales de soporte técnico para todos tus dispositivos. Estamos aquí para ayudarte a resolver tus problemas tecnológicos.",
+    "services": "Servicios",
+    "serviceItems": {
+      "smartphoneRepair": "Reparación de Smartphones",
+      "computerTroubleshooting": "Solución de Problemas de Computadoras",
+      "homeNetworkSetup": "Configuración de Red Doméstica",
+      "techConsultation": "Consulta Técnica"
+    },
+    "company": "Empresa",
+    "companyItems": {
+      "aboutUs": "Sobre Nosotros",
+      "testimonials": "Testimonios",
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de Servicio"
+    },
+    "contact": "Contacto",
+    "location": "Scranton, PA",
+    "email": "support@techpals.com",
+    "allRightsReserved": "Todos los derechos reservados.",
+    "cookiePolicy": "Política de Cookies"
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Nuestros Servicios de Soporte Técnico",
+      "description": "Tech Pals ofrece servicios de soporte técnico asequibles y confiables en Scranton, PA. Desde reparaciones de computadoras hasta configuración de redes, te cubrimos.",
+      "callButton": "Llamar al (570) 535-2472",
+      "contactButton": "Contáctanos"
+    },
+    "learnMore": "Más información",
+    "ctaSection": {
+      "title": "¿Necesitas ayuda técnica de inmediato?",
+      "description": "Ofrecemos servicio el mismo día para muchos problemas. Contáctanos ahora para resolver rápidamente tus problemas tecnológicos.",
+      "callNowButton": "Llamar Ahora",
+      "sendMessageButton": "Enviar un Mensaje"
+    },
+    "servicesList": [
+      {
+        "title": "Reparación de Computadoras",
+        "description": "Servicios asequibles de reparación para computadoras de escritorio y portátiles.",
+        "slug": "computer-repair"
+      },
+      {
+        "title": "Soporte para Dispositivos Móviles",
+        "description": "Ayuda experta con smartphones y tablets de todas las marcas.",
+        "slug": "mobile-support"
+      },
+      {
+        "title": "Configuración de Red Doméstica",
+        "description": "Haz que tu red doméstica funcione sin problemas con nuestro servicio de configuración experto.",
+        "slug": "network-setup"
+      },
+      {
+        "title": "Soluciones de Seguridad",
+        "description": "Protege tu vida digital con nuestros servicios básicos de seguridad.",
+        "slug": "security-solutions"
+      },
+      {
+        "title": "Recuperación de Datos",
+        "description": "Recupera tus archivos y fotos importantes de dispositivos dañados.",
+        "slug": "data-recovery"
+      },
+      {
+        "title": "Actualizaciones de Hardware",
+        "description": "Mejora el rendimiento de tu computadora con actualizaciones de hardware asequibles.",
+        "slug": "hardware-upgrades"
+      },
+      {
+        "title": "Consulta Técnica",
+        "description": "Obtén asesoramiento experto sobre compras de tecnología y soluciones.",
+        "slug": "tech-consultation"
+      },
+      {
+        "title": "Soporte Remoto",
+        "description": "Obtén ayuda sin salir de casa con nuestro servicio de soporte remoto.",
+        "slug": "remote-support"
+      }
+    ]
+  },
+  "serviceDetail": {
+    "backToServices": "Volver a Servicios",
+    "serviceNotFound": "Servicio No Encontrado",
+    "serviceNotFoundDesc": "El servicio que estás buscando no existe.",
+    "contactInfo": {
+      "callUs": "Llámanos:",
+      "location": "Scranton, PA",
+      "hours": "Lun-Vie: 9am-6pm, Sáb: 10am-4pm",
+      "startingAt": "Desde"
+    },
+    "buttons": {
+      "bookAppointment": "Reservar Cita",
+      "requestService": "Solicitar Este Servicio",
+      "callNow": "Llamar Ahora",
+      "getQuote": "Obtener Presupuesto"
+    },
+    "sections": {
+      "whatWeOffer": "Lo Que Ofrecemos",
+      "pricing": "Precios",
+      "customSolution": "¿Necesitas una solución personalizada? Contáctanos para un presupuesto personalizado.",
+      "faq": "Preguntas Frecuentes",
+      "readyToStart": "¿Listo para comenzar?",
+      "contactToday": "Contacta a Tech Pals hoy para soporte técnico confiable en Scranton, PA."
+    }
+  },
+  "aboutPage": {
+    "header": "Sobre TechPals",
+    "title": "Tus Problemas Tecnológicos, Nuestra Experiencia",
+    "mainDescription": "Fundada con pasión por la tecnología y un compromiso con el servicio excepcional, TechPals es tu socio de confianza para todas las necesidades relacionadas con la tecnología. Creemos que la tecnología debe simplificar tu vida, no complicarla.",
+    "secondaryDescription": "Nuestro equipo de técnicos experimentados se especializa en una amplia gama de servicios, desde reparaciones de smartphones hasta configuraciones de redes complejas. Nos mantenemos actualizados con los últimos desarrollos tecnológicos para proporcionarte las mejores soluciones para tus necesidades únicas.",
+    "features": [
+      "Técnicos Experimentados",
+      "Reparaciones de Calidad",
+      "Tarifas Asequibles",
+      "Tiempos de Entrega Rápidos"
+    ],
+    "exploreServices": "Explorar Nuestros Servicios",
+    "featureCards": [
+      {
+        "title": "Expertos de Confianza",
+        "description": "Nuestro equipo está formado por técnicos certificados con años de experiencia resolviendo problemas técnicos complejos."
+      },
+      {
+        "title": "Respuesta Rápida",
+        "description": "Entendemos la urgencia de los problemas tecnológicos y nos enorgullecemos de nuestros tiempos rápidos de respuesta y resolución."
+      },
+      {
+        "title": "Servicio de Calidad",
+        "description": "Utilizando solo las mejores herramientas y piezas, nos aseguramos de que todas las reparaciones y servicios cumplan con los más altos estándares."
+      },
+      {
+        "title": "Satisfacción del Cliente",
+        "description": "Nuestra prioridad es tu satisfacción, por eso ofrecemos una garantía de 30 días en todos nuestros servicios."
+      }
+    ],
+    "additionalSections": {
+      "mission": {
+        "title": "Nuestra Misión",
+        "description1": "En Tech Pals, nuestra misión es proporcionar servicios de soporte técnico asequibles y confiables a la comunidad de Scranton. Creemos que todos merecen acceso a asistencia técnica de calidad sin arruinar su presupuesto.",
+        "description2": "Nos esforzamos por desmitificar la tecnología y capacitar a nuestros clientes con el conocimiento y las herramientas que necesitan para aprovechar al máximo sus dispositivos y sistemas."
+      },
+      "story": {
+        "title": "Nuestra Historia",
+        "description1": "Tech Pals fue fundada por un grupo de entusiastas de la tecnología que vieron la necesidad de un soporte técnico honesto y directo en el área de Scranton. Comenzamos pequeños, ayudando a amigos y familiares con sus problemas informáticos, y crecimos a través del boca a boca a medida que la gente apreciaba nuestro enfoque sin complicaciones.",
+        "description2": "Hoy, estamos orgullosos de servir a toda la comunidad de Scranton con el mismo nivel de cuidado y atención que daríamos a nuestros propios familiares. Nuestro equipo ha crecido, pero nuestros valores siguen siendo los mismos: honestidad, asequibilidad y un deseo genuino de ayudar."
+      }
+    }
+  },
+  "contactPage": {
+    "title": "Contáctanos",
+    "description": "¿Tienes un problema técnico? ¿Necesitas asesoramiento experto? Contáctanos hoy y resolvámoslo juntos.",
+    "contactInfo": {
+      "title": "Información de Contacto",
+      "description": "¿Tienes preguntas o necesitas ayuda? Comunícate con nosotros a través de cualquiera de estos canales, y te responderemos lo antes posible.",
+      "phone": {
+        "title": "Teléfono",
+        "number": "(570) 535-2472",
+        "hours": "Disponible Lun-Vie, 9am-6pm"
+      },
+      "email": {
+        "title": "Correo Electrónico",
+        "address": "support@techpals.info",
+        "response": "Responderemos dentro de 24 horas"
+      },
+      "location": {
+        "title": "Ubicación",
+        "address": "123 Tech Street, Scranton, PA 18503",
+        "note": "También ofrecemos soporte remoto"
+      },
+      "hours": {
+        "title": "Horario",
+        "weekdays": "Lunes-Viernes: 9am-6pm",
+        "saturday": "Sábado: 10am-4pm",
+        "sunday": "Domingo: Cerrado"
+      }
+    },
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "success": "¡Tu mensaje ha sido enviado con éxito! Nos pondremos en contacto pronto.",
+      "fields": {
+        "name": {
+          "label": "Nombre",
+          "placeholder": "Tu nombre"
+        },
+        "email": {
+          "label": "Correo Electrónico",
+          "placeholder": "Tu correo electrónico"
+        },
+        "phone": {
+          "label": "Teléfono",
+          "placeholder": "Tu número de teléfono"
+        },
+        "service": {
+          "label": "Servicio",
+          "placeholder": "Selecciona un servicio",
+          "options": {
+            "computerRepair": "Reparación de Computadoras",
+            "mobileSupport": "Soporte para Dispositivos Móviles",
+            "networkSetup": "Configuración de Red Doméstica",
+            "securitySolutions": "Soluciones de Seguridad",
+            "dataRecovery": "Recuperación de Datos",
+            "hardwareUpgrades": "Actualizaciones de Hardware",
+            "techConsultation": "Consulta Técnica",
+            "remoteSupport": "Soporte Remoto",
+            "other": "Otro"
+          }
+        },
+        "message": {
+          "label": "Mensaje",
+          "placeholder": "Cuéntanos sobre tu problema técnico o pregunta"
+        },
+        "submit": "Enviar Mensaje",
+        "sending": "Enviando..."
+      }
+    }
+  },
+  "common": {
+    "switchLanguage": "English",
+    "companyName": "TechPals",
+    "location": "Scranton, PA",
+    "phoneNumber": "570-535-2472"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar sesión en tu cuenta",
+      "button": "Iniciar Sesión",
+      "processing": "Procesando...",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes una cuenta? Regístrate"
+    },
+    "signUp": {
+      "title": "Crear una cuenta",
+      "button": "Crear Cuenta",
+      "processing": "Procesando...",
+      "haveAccount": "¿Ya tienes una cuenta? Inicia sesión"
+    },
+    "form": {
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Juan Pérez",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "u2022u2022u2022u2022u2022u2022u2022u2022"
+    },
+    "errors": {
+      "title": "Error de autenticación",
+      "generic": "Error al autenticar"
+    },
+    "forgotPassword": {
+      "title": "¿Olvidaste tu contraseña?",
+      "description": "Ingresa tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "button": "Enviar Enlace",
+      "backToLogin": "Volver al inicio de sesión",
+      "processing": "Enviando...",
+      "success": "Revisa tu correo electrónico",
+      "successMessage": "Hemos enviado un enlace para restablecer tu contraseña a tu dirección de correo electrónico."
+    },
+    "resetPassword": {
+      "title": "Restablece tu contraseña",
+      "description": "Ingresa tu nueva contraseña a continuación.",
+      "button": "Restablecer Contraseña",
+      "processing": "Restableciendo...",
+      "success": "Contraseña restablecida con éxito",
+      "successMessage": "Tu contraseña ha sido restablecida con éxito. Ahora puedes iniciar sesión con tu nueva contraseña.",
+      "backToLogin": "Volver al inicio de sesión",
+      "validating": "Validando enlace de restablecimiento...",
+      "invalidToken": "Enlace de restablecimiento inválido o expirado",
+      "invalidTokenMessage": "El enlace de restablecimiento de contraseña es inválido o ha expirado. Por favor, solicita uno nuevo."
+    },
+    "verificationPending": {
+      "title": "Verifica tu correo electrónico",
+      "description": "Hemos enviado un enlace de verificación a",
+      "instructions": "Por favor, revisa tu correo electrónico y haz clic en el enlace para verificar tu cuenta.",
+      "backToLogin": "Volver al inicio de sesión"
+    }
+  }
+}

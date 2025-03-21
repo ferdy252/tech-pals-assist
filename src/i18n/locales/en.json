@@ -1,0 +1,368 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "signOut": "Sign Out",
+    "signInRegister": "Sign In / Register"
+  },
+  "hero": {
+    "tagline": "Professional Tech Support Services",
+    "title": "Expert Tech Solutions",
+    "titleHighlight": "When You Need Them",
+    "description": "We provide fast, reliable tech support for all your devices. From smartphone repairs to home network setups, we've got you covered.",
+    "exploreServices": "Explore Services",
+    "getInTouch": "Get in Touch",
+    "services": {
+      "smartphoneRepairs": "Smartphone Repairs",
+      "computerTroubleshooting": "Computer Troubleshooting",
+      "networkSetup": "Network Setup",
+      "techConsultations": "Tech Consultations"
+    },
+    "techSupport": "Tech Support",
+    "expertAssistance": "Expert assistance for all your tech needs"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Tech Pals provides affordable tech support services in Scranton, PA. Call us at (570) 535-2472 for all your tech needs.",
+    "viewAll": "View All Services",
+    "bookService": "Book This Service",
+    "perService": "per service",
+    "items": {
+      "computerRepair": {
+        "title": "Computer Repair",
+        "description": "Affordable computer repair services for desktops and laptops.",
+        "features": [
+          "Virus & malware removal",
+          "Hardware diagnostics",
+          "Software troubleshooting",
+          "System optimization",
+          "Windows & Mac support"
+        ],
+        "price": "From $45"
+      },
+      "mobileSupport": {
+        "title": "Mobile Device Support",
+        "description": "Expert help with smartphones and tablets of all brands.",
+        "features": [
+          "Screen troubleshooting",
+          "Battery issues",
+          "Software updates",
+          "Data transfer",
+          "App configuration"
+        ],
+        "price": "From $35"
+      },
+      "networkSetup": {
+        "title": "Home Network Setup",
+        "description": "Get your home network running smoothly with our expert setup service.",
+        "features": [
+          "Wi-Fi optimization",
+          "Router configuration",
+          "Device connectivity",
+          "Network security",
+          "Printer setup"
+        ],
+        "price": "From $65"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "description": "Don't just take our word for it — hear from our satisfied customers about their experience with TechPals.",
+    "items": [
+      {
+        "content": "TechPals fixed my laptop's performance issues in just one visit. Professional, fast, and affordable!",
+        "author": "Sarah Johnson",
+        "position": "Small Business Owner"
+      },
+      {
+        "content": "After struggling with my home network for months, TechPals set everything up perfectly. My Wi-Fi has never been more reliable.",
+        "author": "Michael Chen",
+        "position": "Remote Worker"
+      },
+      {
+        "content": "They helped me choose the perfect devices for my needs and set everything up. Their consultation service saved me time and money.",
+        "author": "Emily Rodriguez",
+        "position": "Teacher"
+      }
+    ]
+  },
+  "footer": {
+    "description": "Professional tech support services for all your devices. We're here to help you solve your tech problems.",
+    "services": "Services",
+    "serviceItems": {
+      "smartphoneRepair": "Smartphone Repair",
+      "computerTroubleshooting": "Computer Troubleshooting",
+      "homeNetworkSetup": "Home Network Setup",
+      "techConsultation": "Tech Consultation"
+    },
+    "company": "Company",
+    "companyItems": {
+      "aboutUs": "About Us",
+      "testimonials": "Testimonials",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "contact": "Contact",
+    "location": "Scranton, PA",
+    "email": "support@techpals.com",
+    "allRightsReserved": "All rights reserved.",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Our Tech Support Services",
+      "description": "Tech Pals provides affordable, reliable tech support services in Scranton, PA. From computer repairs to network setup, we've got you covered.",
+      "callButton": "Call (570) 535-2472",
+      "contactButton": "Contact Us"
+    },
+    "learnMore": "Learn more",
+    "ctaSection": {
+      "title": "Need tech help right away?",
+      "description": "We offer same-day service for many issues. Contact us now to get your tech problems solved quickly.",
+      "callNowButton": "Call Now",
+      "sendMessageButton": "Send a Message"
+    },
+    "servicesList": [
+      {
+        "title": "Computer Repair",
+        "description": "Affordable computer repair services for desktops and laptops.",
+        "slug": "computer-repair"
+      },
+      {
+        "title": "Mobile Device Support",
+        "description": "Expert help with smartphones and tablets of all brands.",
+        "slug": "mobile-support"
+      },
+      {
+        "title": "Home Network Setup",
+        "description": "Get your home network running smoothly with our expert setup service.",
+        "slug": "network-setup"
+      },
+      {
+        "title": "Security Solutions",
+        "description": "Protect your digital life with our basic security services.",
+        "slug": "security-solutions"
+      },
+      {
+        "title": "Data Recovery",
+        "description": "Recover your important files and photos from damaged devices.",
+        "slug": "data-recovery"
+      },
+      {
+        "title": "Hardware Upgrades",
+        "description": "Boost your computer performance with affordable hardware upgrades.",
+        "slug": "hardware-upgrades"
+      },
+      {
+        "title": "Tech Consultation",
+        "description": "Get expert advice on technology purchases and solutions.",
+        "slug": "tech-consultation"
+      },
+      {
+        "title": "Remote Support",
+        "description": "Get help without leaving your home with our remote support service.",
+        "slug": "remote-support"
+      }
+    ]
+  },
+  "serviceDetail": {
+    "backToServices": "Back to Services",
+    "serviceNotFound": "Service Not Found",
+    "serviceNotFoundDesc": "The service you're looking for doesn't exist.",
+    "contactInfo": {
+      "callUs": "Call us:",
+      "location": "Scranton, PA",
+      "hours": "Mon-Fri: 9am-6pm, Sat: 10am-4pm",
+      "startingAt": "Starting at"
+    },
+    "buttons": {
+      "bookAppointment": "Book Appointment",
+      "requestService": "Request This Service",
+      "callNow": "Call Now",
+      "getQuote": "Get a Quote"
+    },
+    "sections": {
+      "whatWeOffer": "What We Offer",
+      "pricing": "Pricing",
+      "customSolution": "Need a custom solution? Contact us for a personalized quote.",
+      "faq": "Frequently Asked Questions",
+      "readyToStart": "Ready to get started?",
+      "contactToday": "Contact Tech Pals today for reliable tech support in Scranton, PA."
+    }
+  },
+  "aboutPage": {
+    "header": "About TechPals",
+    "title": "Your Technology Problems, Our Expertise",
+    "mainDescription": "Founded with a passion for technology and a commitment to exceptional service, TechPals is your trusted partner for all tech-related needs. We believe that technology should simplify your life, not complicate it.",
+    "secondaryDescription": "Our team of experienced technicians specializes in a wide range of services, from smartphone repairs to complex network setups. We stay updated with the latest technological developments to provide you with the best solutions for your unique needs.",
+    "features": [
+      "Experienced Technicians",
+      "Quality Repairs",
+      "Affordable Rates",
+      "Fast Turnaround"
+    ],
+    "exploreServices": "Explore Our Services",
+    "featureCards": [
+      {
+        "title": "Trusted Experts",
+        "description": "Our team consists of certified technicians with years of experience solving complex tech issues."
+      },
+      {
+        "title": "Fast Response",
+        "description": "We understand the urgency of tech problems and pride ourselves on our quick response and resolution times."
+      },
+      {
+        "title": "Quality Service",
+        "description": "Using only the best tools and parts, we ensure that all repairs and services meet the highest standards."
+      },
+      {
+        "title": "Customer Satisfaction",
+        "description": "Our priority is your satisfaction, which is why we offer a 30-day warranty on all our services."
+      }
+    ],
+    "additionalSections": {
+      "mission": {
+        "title": "Our Mission",
+        "description1": "At Tech Pals, our mission is to provide affordable, reliable tech support services to the Scranton community. We believe that everyone deserves access to quality technical assistance without breaking the bank.",
+        "description2": "We strive to demystify technology and empower our customers with the knowledge and tools they need to get the most out of their devices and systems."
+      },
+      "story": {
+        "title": "Our Story",
+        "description1": "Tech Pals was founded by a group of tech enthusiasts who saw a need for honest, straightforward tech support in the Scranton area. We started small, helping friends and family with their computer issues, and grew through word-of-mouth as people appreciated our no-nonsense approach.",
+        "description2": "Today, we're proud to serve the entire Scranton community with the same level of care and attention that we'd give to our own family members. Our team has grown, but our values remain the same: honesty, affordability, and a genuine desire to help."
+      }
+    }
+  },
+  "contactPage": {
+    "title": "Get in Touch",
+    "description": "Have a tech problem? Need expert advice? Contact us today and let's solve it together.",
+    "contactInfo": {
+      "title": "Contact Information",
+      "description": "Have questions or need assistance? Reach out to us through any of these channels, and we'll get back to you as soon as possible.",
+      "phone": {
+        "title": "Phone",
+        "number": "(570) 535-2472",
+        "hours": "Available Mon-Fri, 9am-6pm"
+      },
+      "email": {
+        "title": "Email",
+        "address": "support@techpals.info",
+        "response": "We'll respond within 24 hours"
+      },
+      "location": {
+        "title": "Location",
+        "address": "123 Tech Street, Scranton, PA 18503",
+        "note": "We also offer remote support"
+      },
+      "hours": {
+        "title": "Hours",
+        "weekdays": "Monday-Friday: 9am-6pm",
+        "saturday": "Saturday: 10am-4pm",
+        "sunday": "Sunday: Closed"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "success": "Your message has been sent successfully! We'll be in touch soon.",
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Your email"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Your phone number"
+        },
+        "service": {
+          "label": "Service",
+          "placeholder": "Select a service",
+          "options": {
+            "computerRepair": "Computer Repair",
+            "mobileSupport": "Mobile Device Support",
+            "networkSetup": "Home Network Setup",
+            "securitySolutions": "Security Solutions",
+            "dataRecovery": "Data Recovery",
+            "hardwareUpgrades": "Hardware Upgrades",
+            "techConsultation": "Tech Consultation",
+            "remoteSupport": "Remote Support",
+            "other": "Other"
+          }
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us about your tech issue or question"
+        },
+        "submit": "Send Message",
+        "sending": "Sending..."
+      }
+    }
+  },
+  "common": {
+    "switchLanguage": "Español",
+    "companyName": "TechPals",
+    "location": "Scranton, PA",
+    "phoneNumber": "570-535-2472"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in to your account",
+      "button": "Sign In",
+      "processing": "Processing...",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account? Sign up"
+    },
+    "signUp": {
+      "title": "Create an account",
+      "button": "Create Account",
+      "processing": "Processing...",
+      "haveAccount": "Already have an account? Sign in"
+    },
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••"
+    },
+    "errors": {
+      "title": "Authentication error",
+      "generic": "Failed to authenticate"
+    },
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "description": "Enter your email address and we'll send you a link to reset your password.",
+      "button": "Send Reset Link",
+      "backToLogin": "Back to login",
+      "processing": "Sending...",
+      "success": "Check your email",
+      "successMessage": "We've sent a password reset link to your email address."
+    },
+    "resetPassword": {
+      "title": "Reset your password",
+      "description": "Enter your new password below.",
+      "button": "Reset Password",
+      "processing": "Resetting...",
+      "success": "Password reset successful",
+      "successMessage": "Your password has been reset successfully. You can now login with your new password.",
+      "backToLogin": "Back to login",
+      "validating": "Validating reset link...",
+      "invalidToken": "Invalid or expired reset link",
+      "invalidTokenMessage": "The password reset link is invalid or has expired. Please request a new one."
+    },
+    "verificationPending": {
+      "title": "Verify your email",
+      "description": "We've sent a verification link to",
+      "instructions": "Please check your email and click the link to verify your account.",
+      "backToLogin": "Back to login"
+    }
+  }
+}

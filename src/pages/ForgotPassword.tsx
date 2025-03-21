@@ -42,11 +42,11 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
+      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700/20 p-8 transition-colors duration-300">
         <div className="flex justify-center mb-6">
           <Link to="/" className="flex items-center space-x-2 text-xl font-semibold">
-            <Computer className="h-6 w-6 text-blue-500" />
+            <Computer className="h-6 w-6 text-blue-500 dark:text-blue-400" />
             <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
               TechPals
             </span>
@@ -55,14 +55,14 @@ const ForgotPassword = () => {
         
         {!emailSent ? (
           <>
-            <h2 className="text-2xl font-bold text-center mb-6">Reset Your Password</h2>
-            <p className="text-gray-600 text-center mb-6">
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">Reset Your Password</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-center mb-6">
               Enter your email address and we'll send you a link to reset your password.
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -70,10 +70,11 @@ const ForgotPassword = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="you@example.com"
+                  className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
                 />
               </div>
               
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" disabled={loading}>
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </Button>
             </form>
@@ -81,20 +82,20 @@ const ForgotPassword = () => {
         ) : (
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <Mail className="h-12 w-12 text-blue-500" />
+              <Mail className="h-12 w-12 text-blue-500 dark:text-blue-400" />
             </div>
-            <h2 className="text-2xl font-bold mb-4">Check Your Email</h2>
-            <p className="text-gray-600 mb-6">
-              We've sent a password reset link to <strong>{email}</strong>.
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Check Your Email</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              We've sent a password reset link to <strong className="text-gray-800 dark:text-gray-200">{email}</strong>.
               Please check your email and follow the instructions to reset your password.
             </p>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               If you don't see the email, check your spam folder or try again.
             </p>
             <Button 
               onClick={() => setEmailSent(false)} 
               variant="outline" 
-              className="w-full mb-3"
+              className="w-full mb-3 border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Try Again
             </Button>
@@ -102,7 +103,7 @@ const ForgotPassword = () => {
         )}
         
         <div className="mt-6 text-center">
-          <Link to="/auth" className="text-sm text-blue-600 hover:underline">
+          <Link to="/auth" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
             Return to Sign In
           </Link>
         </div>

@@ -3,49 +3,39 @@ import ServiceCard from './ServiceCard';
 import { Smartphone, Computer, Network, HelpCircle, Shield, Wifi, Database, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t } = useTranslation();
+
+  // Define features arrays directly to avoid type issues
+  const computerRepairFeatures = t('services.items.computerRepair.features', { returnObjects: true }) as string[];
+  const mobileSupportFeatures = t('services.items.mobileSupport.features', { returnObjects: true }) as string[];
+  const networkSetupFeatures = t('services.items.networkSetup.features', { returnObjects: true }) as string[];
+
   const services = [
     {
       icon: <Computer className="h-8 w-8" />,
-      title: 'Computer Repair',
-      description: 'Affordable computer repair services for desktops and laptops.',
-      features: [
-        'Virus & malware removal',
-        'Hardware diagnostics',
-        'Software troubleshooting',
-        'System optimization',
-        'Windows & Mac support'
-      ],
-      price: 'From $45',
+      title: t('services.items.computerRepair.title'),
+      description: t('services.items.computerRepair.description'),
+      features: computerRepairFeatures,
+      price: t('services.items.computerRepair.price'),
       slug: 'computer-repair'
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
-      title: 'Mobile Device Support',
-      description: 'Expert help with smartphones and tablets of all brands.',
-      features: [
-        'Screen troubleshooting',
-        'Battery issues',
-        'Software updates',
-        'Data transfer',
-        'App configuration'
-      ],
-      price: 'From $35',
+      title: t('services.items.mobileSupport.title'),
+      description: t('services.items.mobileSupport.description'),
+      features: mobileSupportFeatures,
+      price: t('services.items.mobileSupport.price'),
       slug: 'mobile-support'
     },
     {
       icon: <Wifi className="h-8 w-8" />,
-      title: 'Home Network Setup',
-      description: 'Get your home network running smoothly with our expert setup service.',
-      features: [
-        'Wi-Fi optimization',
-        'Router configuration',
-        'Device connectivity',
-        'Network security',
-        'Printer setup'
-      ],
-      price: 'From $65',
+      title: t('services.items.networkSetup.title'),
+      description: t('services.items.networkSetup.description'),
+      features: networkSetupFeatures,
+      price: t('services.items.networkSetup.price'),
       slug: 'network-setup'
     }
   ];
@@ -54,13 +44,12 @@ const Services = () => {
   // The full list is available on the services page
 
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-gradient-to-b from-white to-blue-50">
+    <section id="services" className="py-24 px-6 md:px-12 bg-gradient-to-b from-white dark:from-gray-900 to-blue-50 dark:to-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 animate-slide-up">Our Services</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Tech Pals provides affordable tech support services in Scranton, PA. 
-            Call us at <a href="tel:5705352472" className="text-blue-600 hover:underline">(570) 535-2472</a> for all your tech needs.
+          <h2 className="text-3xl font-bold mb-4 animate-slide-up dark:text-white">{t('services.title')}</h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            {t('services.description')}
           </p>
         </div>
         
@@ -83,7 +72,7 @@ const Services = () => {
         <div className="mt-12 text-center">
           <Link to="/services">
             <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-in-out transform hover:scale-105 shadow-md">
-              View All Services
+              {t('services.viewAll')}
             </Button>
           </Link>
         </div>

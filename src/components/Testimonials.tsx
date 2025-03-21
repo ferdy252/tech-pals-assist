@@ -1,5 +1,11 @@
-
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+interface Testimonial {
+  content: string;
+  author: string;
+  position: string;
+}
 
 const testimonials = [
   {
@@ -23,48 +29,49 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const { t } = useTranslation();
+  
+  // Type the testimonials array properly
+  const translatedTestimonials = t('testimonials.items', { returnObjects: true }) as Testimonial[];
+
   return (
-    <section id="testimonials" className="py-24 px-6 md:px-12 bg-white">
+    <section className="py-24 px-6 md:px-12 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 animate-slide-up">What Our Clients Say</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Don't just take our word for it — hear from our satisfied customers about their experience with TechPals.
+          <h2 className="text-3xl font-bold mb-4 dark:text-white">{t('testimonials.title')}</h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {t('testimonials.description')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {translatedTestimonials.map((testimonial, index) => (
+            <div 
               key={index}
-              className="glass p-8 rounded-2xl border border-white/20 hover:shadow-lg transition-all duration-300"
+              className="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 relative overflow-hidden"
               style={{ 
-                transform: 'translateY(20px)', 
-                opacity: 0, 
+                transform: 'translateY(20px)',
+                opacity: 0,
                 animation: 'slideUp 0.6s ease-out forwards',
-                animationDelay: `${index * 0.15}s` 
+                animationDelay: `${index * 0.15}s`,
               }}
             >
-              <div className="flex flex-col h-full">
-                <div className="mb-6 flex-grow">
-                  <svg className="h-8 w-8 text-blue-500 mb-4 opacity-50" fill="currentColor" viewBox="0 0 32 32">
-                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                  </svg>
-                  <p className="text-gray-600">{testimonial.content}</p>
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+              <div className="mb-6">
+                <svg className="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 32 32">
+                  <path d="M10,8c-4.411,0-8,3.589-8,8s3.589,8,8,8c0.702,0,1.378-0.101,2.021-0.271c-0.004,0.032-0.021,0.059-0.021,0.092v4.758l6.168-6.168C19.349,20.676,20,18.91,20,17C20,11.589,16.411,8,10,8z M10,20c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S12.206,20,10,20z M30,8h-8c-1.105,0-2,0.895-2,2v10c0,1.105,0.895,2,2,2h5.172l4.828,4.828V10C32,8.895,31.105,8,30,8z M28,18h-4v-2h4V18z M28,14h-4v-2h4V14z"></path>
+                </svg>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 italic">"{testimonial.content}"</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center mr-4">
+                  <span className="text-xl font-semibold text-gray-500 dark:text-gray-300">
+                    {testimonial.author.charAt(0)}
+                  </span>
                 </div>
-                <div className="flex items-center mt-6">
-                  <div className="relative w-12 h-12 mr-4">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.author} 
-                      className="absolute inset-0 w-full h-full object-cover rounded-full"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">{testimonial.author}</h4>
-                    <p className="text-sm text-gray-500">{testimonial.position}</p>
-                  </div>
+                <div>
+                  <h4 className="font-semibold dark:text-white">{testimonial.author}</h4>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonial.position}</p>
                 </div>
               </div>
             </div>
