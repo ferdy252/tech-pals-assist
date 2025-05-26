@@ -15,6 +15,7 @@
     "description": "We provide fast, reliable tech support for all your devices. From smartphone repairs to home network setups, we've got you covered.",
     "exploreServices": "Explore Services",
     "getInTouch": "Get in Touch",
+    "bookAppointment": "Book Appointment",
     "services": {
       "smartphoneRepairs": "Smartphone Repairs",
       "computerTroubleshooting": "Computer Troubleshooting",

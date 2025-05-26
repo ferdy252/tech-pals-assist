@@ -21,13 +21,9 @@ const ServiceDetail = () => {
   }, []);
 
   const handleBookAppointment = () => {
-    if (!user) {
-      // If user is not logged in, redirect to login page with a redirect back to appointment booking
-      navigate('/login', { state: { redirectTo: `/book-appointment?service=${slug}` } });
-    } else {
-      // If user is logged in, go directly to appointment booking with service pre-selected
-      navigate(`/book-appointment?service=${slug}`);
-    }
+    // Direct to appointment booking with service pre-selected
+    // No login required anymore
+    navigate(`/book-appointment?service=${slug}`);
   };
 
   if (!service) {

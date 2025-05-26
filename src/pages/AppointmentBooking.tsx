@@ -13,8 +13,10 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { format, addDays, addWeeks, startOfDay, setHours, setMinutes, isBefore } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { CalendarIcon, Clock, ArrowLeft } from 'lucide-react';
+import { CalendarIcon, Clock, ArrowLeft, User, Mail, Phone } from 'lucide-react';
 import { getServiceDetail } from '@/pages/services/serviceData';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 type ServiceType = {
   id: string;
@@ -42,6 +44,11 @@ const AppointmentBooking = () => {
   const [issue, setIssue] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingServices, setLoadingServices] = useState(true);
+  
+  // Guest information fields
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   
   // Parse URL parameters to get pre-selected service
   useEffect(() => {
@@ -198,6 +205,29 @@ const AppointmentBooking = () => {
       return;
     }
     
+    // If user is not logged in, validate guest information
+    if (!user) {
+      if (!name || !email) {
+        toast({
+          title: 'Missing information',
+          description: 'Please provide your name and email address.',
+          variant: 'destructive',
+        });
+        return;
+      }
+      
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        toast({
+          title: 'Invalid email',
+          description: 'Please provide a valid email address.',
+          variant: 'destructive',
+        });
+        return;
+      }
+    }
+    
     setLoading(true);
     
     try {
@@ -237,19 +267,28 @@ const AppointmentBooking = () => {
       }
       
       // Create appointment in database
+      const appointmentData = {
+        user_id: user?.id || null,
+        service_id: selectedService,
+        service_name: service?.name,
+        appointment_date: appointmentDate.toISOString(),
+        duration: service?.duration || 60,
+        issue_description: issue,
+        status: 'scheduled',
+      };
+      
+      // Add guest information if user is not logged in
+      if (!user) {
+        Object.assign(appointmentData, {
+          guest_name: name,
+          guest_email: email,
+          guest_phone: phone || null,
+        });
+      }
+      
       const { data, error } = await supabase
         .from('appointments')
-        .insert([
-          {
-            user_id: user?.id,
-            service_id: selectedService,
-            service_name: service?.name,
-            appointment_date: appointmentDate.toISOString(),
-            duration: service?.duration || 60,
-            issue_description: issue,
-            status: 'scheduled',
-          },
-        ])
+        .insert([appointmentData])
         .select();
       
       if (error) throw error;
@@ -259,8 +298,23 @@ const AppointmentBooking = () => {
         description: `Your appointment has been scheduled for ${format(appointmentDate, 'EEEE, MMMM d, yyyy')} at ${selectedTime}.`,
       });
       
-      // Redirect to dashboard
-      navigate('/dashboard', { state: { activeTab: 'appointments' } });
+      // Redirect to confirmation page or dashboard if logged in
+      if (user) {
+        navigate('/dashboard', { state: { activeTab: 'appointments' } });
+      } else {
+        // For guests, show a confirmation message and clear the form
+        // We could also create a dedicated confirmation page in the future
+        setSelectedService('');
+        setSelectedDate(undefined);
+        setSelectedTime('');
+        setIssue('');
+        setName('');
+        setEmail('');
+        setPhone('');
+        
+        // Scroll to top to show the success message
+        window.scrollTo(0, 0);
+      }
     } catch (error: any) {
       console.error('Error scheduling appointment:', error.message);
       toast({
@@ -274,7 +328,8 @@ const AppointmentBooking = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 px-4 pb-10">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 px-4 pb-10">
+      <Navbar />
       <div className="max-w-3xl mx-auto">
         <Button
           variant="ghost"
@@ -294,6 +349,58 @@ const AppointmentBooking = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Guest information section (only shown if not logged in) */}
+              {!user && (
+                <div className="space-y-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                  <h3 className="font-medium text-blue-800 dark:text-blue-300">Your Contact Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="flex items-center">
+                        <User className="h-4 w-4 mr-1" />
+                        Full Name *
+                      </Label>
+                      <Input
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="flex items-center">
+                        <Mail className="h-4 w-4 mr-1" />
+                        Email Address *
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone" className="flex items-center">
+                      <Phone className="h-4 w-4 mr-1" />
+                      Phone Number (Optional)
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="(570) 535-2472"
+                    />
+                  </div>
+                  <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">
+                    <strong>Note:</strong> Creating an account is not required to book an appointment, but having an account allows you to track all your appointments and service requests.
+                  </p>
+                </div>
+              )}
+              
               <div className="space-y-2">
                 <Label htmlFor="service">Select Service</Label>
                 <Select
@@ -399,6 +506,7 @@ const AppointmentBooking = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

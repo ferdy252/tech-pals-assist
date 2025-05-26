@@ -6,175 +6,240 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          operationName?: string
+          query?: string
+          variables?: Json
+          extensions?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
-      profiles: {
+      appointments: {
         Row: {
+          appointment_date: string
+          created_at: string | null
+          duration: number
+          guest_email: string | null
+          guest_name: string | null
+          guest_phone: string | null
           id: string
-          username: string
-          full_name: string
-          avatar_url: string
-          created_at: string
-          updated_at: string
-        }
-        Insert: {
-          id: string
-          username?: string
-          full_name?: string
-          avatar_url?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          username?: string
-          full_name?: string
-          avatar_url?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      service_requests: {
-        Row: {
-          id: string
-          user_id: string
-          title: string
-          description: string
-          service_type: string
+          issue_description: string | null
+          service_id: string
+          service_name: string
           status: string
-          created_at: string
-          updated_at: string
+          updated_at: string | null
+          user_id: string | null
         }
         Insert: {
+          appointment_date: string
+          created_at?: string | null
+          duration: number
+          guest_email?: string | null
+          guest_name?: string | null
+          guest_phone?: string | null
           id?: string
-          user_id: string
-          title: string
-          description: string
-          service_type: string
+          issue_description?: string | null
+          service_id: string
+          service_name: string
           status?: string
-          created_at?: string
-          updated_at?: string
+          updated_at?: string | null
+          user_id?: string | null
         }
         Update: {
+          appointment_date?: string
+          created_at?: string | null
+          duration?: number
+          guest_email?: string | null
+          guest_name?: string | null
+          guest_phone?: string | null
           id?: string
-          user_id?: string
-          title?: string
-          description?: string
-          service_type?: string
+          issue_description?: string | null
+          service_id?: string
+          service_name?: string
           status?: string
-          created_at?: string
-          updated_at?: string
+          updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
       services: {
         Row: {
+          created_at: string | null
+          description: string
+          duration: number
           id: string
           name: string
-          description: string
           price: string
-          duration: number
-          created_at: string
-          updated_at: string
+          updated_at: string | null
         }
         Insert: {
+          created_at?: string | null
+          description: string
+          duration: number
           id?: string
           name: string
-          description: string
           price: string
-          duration: number
-          created_at?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Update: {
+          created_at?: string | null
+          description?: string
+          duration?: number
           id?: string
           name?: string
-          description?: string
           price?: string
-          duration?: number
-          created_at?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
-      appointments: {
+    }
+    Views: {
+      all_appointments: {
         Row: {
-          id: string
-          user_id: string
-          service_id: string
-          service_name: string
-          appointment_date: string
-          duration: number
-          issue_description: string
-          status: string
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          user_id: string
-          service_id: string
-          service_name: string
-          appointment_date: string
-          duration: number
-          issue_description: string
-          status: string
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          service_id?: string
-          service_name?: string
-          appointment_date?: string
-          duration?: number
-          issue_description?: string
-          status?: string
-          created_at?: string
+          appointment_date: string | null
+          contact_email: string | null
+          contact_name: string | null
+          created_at: string | null
+          duration: number | null
+          guest_email: string | null
+          guest_name: string | null
+          guest_phone: string | null
+          id: string | null
+          issue_description: string | null
+          service_id: string | null
+          service_name: string | null
+          status: string | null
+          updated_at: string | null
+          user_id: string | null
         }
         Relationships: []
       }
     }
-    Views: {}
     Functions: {
-      check_table_exists: {
-        Args: {
-          table_name: string
-        }
-        Returns: boolean
-      }
-      get_user_appointments: {
-        Args: {
-          user_id: string
-        }
-        Returns: {
-          id: string
-          user_id: string
-          service_id: string
-          service_name: string
-          appointment_date: string
-          duration: number
-          issue_description: string
-          status: string
-          created_at: string
-        }[]
-      }
-      cancel_appointment: {
-        Args: {
-          appointment_id: string
-        }
-        Returns: boolean
-      }
-      update_appointment_status: {
-        Args: {
-          p_appointment_id: string
-          p_status: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
-    Enums: {}
-    CompositeTypes: {}
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
 }
+
+type PublicSchema = Database[Extract<keyof Database, "public">]
+
+export type Tables<
+  PublicTableNameOrOptions extends
+    | keyof (PublicSchema["Tables"] & PublicSchema["Views"])
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+        Database[PublicTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : PublicTableNameOrOptions extends keyof (PublicSchema["Tables"] &
+        PublicSchema["Views"])
+    ? (PublicSchema["Tables"] &
+        PublicSchema["Views"])[PublicTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  PublicTableNameOrOptions extends
+    | keyof PublicSchema["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  PublicTableNameOrOptions extends
+    | keyof PublicSchema["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  PublicEnumNameOrOptions extends
+    | keyof PublicSchema["Enums"]
+    | { schema: keyof Database },
+  EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = PublicEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
+    ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never

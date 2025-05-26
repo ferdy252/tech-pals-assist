@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Smartphone, Computer, Network, HelpCircle } from 'lucide-react';
+import { ArrowRight, Smartphone, Computer, Network, HelpCircle, Calendar, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,19 +34,22 @@ const Hero = () => {
             </p>
             
             <div className="delay-3 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-              <a 
-                href="#services" 
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full inline-flex items-center justify-center font-medium transition-all duration-300 transform hover:scale-105 shadow-md group"
+              <Link 
+                to="/services" 
               >
-                {t('hero.exploreServices')}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-              <a 
-                href="#contact" 
-                className="glass dark:bg-gray-800/80 dark:backdrop-blur-md dark:border-gray-700/20 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-6 py-3 rounded-full inline-flex items-center justify-center font-medium transition-all duration-300 hover:bg-white/90 dark:hover:bg-gray-700/90"
+                <Button size="lg" className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full inline-flex items-center justify-center font-medium transition-all duration-300 transform hover:scale-105 shadow-md group">
+                  {t('hero.exploreServices')}
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link 
+                to="/book-appointment" 
               >
-                {t('hero.getInTouch')}
-              </a>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto glass dark:bg-gray-800/80 dark:backdrop-blur-md dark:border-gray-700/20 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-6 py-3 rounded-full inline-flex items-center justify-center font-medium transition-all duration-300 hover:bg-white/90 dark:hover:bg-gray-700/90">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  {t('hero.bookAppointment')}
+                </Button>
+              </Link>
             </div>
           </div>
           
