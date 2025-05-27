@@ -312,6 +312,20 @@
     "location": "Scranton, PA",
     "phoneNumber": "570-535-2472"
   },
+  "months": {
+    "0": "Enero",
+    "1": "Febrero",
+    "2": "Marzo",
+    "3": "Abril",
+    "4": "Mayo",
+    "5": "Junio",
+    "6": "Julio",
+    "7": "Agosto",
+    "8": "Septiembre",
+    "9": "Octubre",
+    "10": "Noviembre",
+    "11": "Diciembre"
+  },
   "auth": {
     "signIn": {
       "title": "Iniciar sesión en tu cuenta",
@@ -368,7 +382,7 @@
   },
   "privacyPolicy": {
     "title": "Política de Privacidad",
-    "lastUpdated": "Última Actualización: Mayo",
+    "lastUpdated": "Última Actualización: {{month}} {{year}}",
     "sections": {
       "introduction": {
         "title": "Introducción",
@@ -432,10 +446,22 @@
         "title": "Divulgación de Su Información",
         "intro": "Podemos divulgar su información personal en las siguientes situaciones:",
         "items": [
-          "<strong>Proveedores de Servicios:</strong> Podemos compartir su información con vendedores, proveedores de servicios y contratistas externos que realizan servicios para nosotros o en nuestro nombre.",
-          "<strong>Transferencias Comerciales:</strong> Si estamos involucrados en una fusión, adquisición o venta de todos o una parte de nuestros activos, su información puede ser transferida como parte de esa transacción.",
-          "<strong>Requisitos Legales:</strong> Podemos divulgar su información si es requerido por ley o en respuesta a solicitudes válidas de autoridades públicas.",
-          "<strong>Protección de Derechos:</strong> Podemos divulgar su información para proteger y defender nuestros derechos, propiedad o seguridad, o los de nuestros usuarios o terceros."
+          {
+            "title": "Proveedores de Servicios",
+            "description": "Podemos compartir su información con vendedores, proveedores de servicios y contratistas externos que realizan servicios para nosotros o en nuestro nombre."
+          },
+          {
+            "title": "Transferencias Comerciales",
+            "description": "Si estamos involucrados en una fusión, adquisición o venta de todos o una parte de nuestros activos, su información puede ser transferida como parte de esa transacción."
+          },
+          {
+            "title": "Requisitos Legales",
+            "description": "Podemos divulgar su información si es requerido por ley o en respuesta a solicitudes válidas de autoridades públicas."
+          },
+          {
+            "title": "Protección de Derechos",
+            "description": "Podemos divulgar su información para proteger y defender nuestros derechos, propiedad o seguridad, o los de nuestros usuarios o terceros."
+          }
         ]
       },
       "security": {
@@ -473,7 +499,7 @@
   },
   "termsOfService": {
     "title": "Términos de Servicio",
-    "lastUpdated": "Última Actualización: Mayo",
+    "lastUpdated": "Última Actualización: {{month}} {{year}}",
     "sections": {
       "introduction": {
         "title": "Introducción",

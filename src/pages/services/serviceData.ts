@@ -260,14 +260,398 @@ export const serviceDetails: ServiceDetail[] = [
   }
 ];
 
-// Add placeholder data for the remaining services
-export const remainingServices: string[] = [
-  'security-solutions',
-  'data-recovery',
-  'hardware-upgrades',
-  'tech-consultation',
-  'remote-support'
-];
+// Add detailed content for security-solutions
+serviceDetails.push({
+  slug: 'security-solutions',
+  title: 'Security Solutions',
+  longDescription: 'Our comprehensive security solutions protect your digital life from threats like viruses, malware, and hackers. We offer both preventative measures and remediation services to keep your data safe and your devices secure.',
+  image: '/images/services/security-solutions.svg',
+  imageCaption: 'Advanced cybersecurity protection for your devices',
+  price: '$55',
+  detailSections: [
+    {
+      title: 'Complete Digital Security Protection',
+      content: 'At Tech Pals, we provide comprehensive security solutions to protect your computers, mobile devices, and networks from various digital threats. Our security experts use industry-leading tools and techniques to safeguard your digital life.',
+      listItems: [
+        'Virus and malware protection',
+        'Ransomware prevention and removal',
+        'Phishing protection',
+        'Password management solutions',
+        'Data encryption services'
+      ]
+    },
+    {
+      title: 'Our Security Assessment Process',
+      content: 'We begin with a thorough security assessment of your current setup to identify vulnerabilities. Then we implement appropriate security measures tailored to your specific needs. Finally, we provide education on best practices to maintain your security going forward.'
+    },
+    {
+      title: 'Why Choose Our Security Solutions',
+      content: 'Our security solutions stand out because we focus on both technical protection and user education. We believe that the best security combines robust technical measures with informed user behavior.',
+      listItems: [
+        'Personalized security plans',
+        'Regular security updates',
+        'Plain-language security education',
+        'Ongoing support for security issues',
+        'Affordable protection packages'
+      ]
+    }
+  ],
+  pricingOptions: [
+    {
+      name: 'Basic Security Scan',
+      price: '$55',
+      description: 'Comprehensive scan for viruses, malware, and security vulnerabilities with basic remediation.'
+    },
+    {
+      name: 'Advanced Malware Removal',
+      price: '$85',
+      description: 'Complete removal of complex malware, ransomware, and persistent threats.'
+    },
+    {
+      name: 'Security Suite Setup',
+      price: '$75',
+      description: 'Installation and configuration of comprehensive security software with ongoing protection.'
+    },
+    {
+      name: 'Complete Security Package',
+      price: '$125',
+      description: 'Full security audit, software installation, data backup setup, and security training.'
+    }
+  ],
+  faqs: [
+    {
+      question: 'How do I know if my computer has a virus?',
+      answer: 'Common signs include unexpected slowdowns, strange pop-ups, programs starting on their own, or unusual network activity. If you notice any of these, it\'s best to get a security check.'
+    },
+    {
+      question: 'Do I need antivirus software if I have a Mac?',
+      answer: 'While Macs are generally less targeted than Windows computers, they are not immune to malware. We recommend security software for all devices, including Macs.'
+    },
+    {
+      question: 'How often should I update my security software?',
+      answer: 'Security software should be set to update automatically to ensure you have the latest protection against new threats.'
+    },
+    {
+      question: 'What should I do if I think my accounts have been hacked?',
+      answer: 'Immediately change your passwords from a secure device, enable two-factor authentication where possible, and contact us for a security assessment to ensure your devices are clean.'
+    }
+  ]
+});
+
+// Add detailed content for data-recovery
+serviceDetails.push({
+  slug: 'data-recovery',
+  title: 'Data Recovery',
+  longDescription: 'Our data recovery service helps retrieve your valuable files from damaged, failed, or inaccessible storage devices. Whether it\'s a crashed hard drive, corrupted memory card, or accidentally deleted files, we can help recover your important data.',
+  image: '/images/services/data-recovery.svg',
+  imageCaption: 'Professional data recovery services',
+  price: '$75',
+  detailSections: [
+    {
+      title: 'Comprehensive Data Recovery Solutions',
+      content: 'We offer professional data recovery services for all types of storage devices. Our technicians use specialized tools and techniques to recover data from various scenarios, from simple file deletion to complex drive failures.',
+      listItems: [
+        'Hard drive data recovery',
+        'SSD data recovery',
+        'Flash drive and memory card recovery',
+        'Deleted file recovery',
+        'Recovery from formatted or corrupted drives'
+      ]
+    },
+    {
+      title: 'Our Data Recovery Process',
+      content: 'Our process begins with a free initial assessment to determine the likelihood of recovery. We then use specialized software and techniques to safely extract your data without causing further damage. Finally, we transfer the recovered data to a new storage device of your choice.'
+    },
+    {
+      title: 'Why Choose Our Data Recovery Service',
+      content: 'Our data recovery service stands out because we offer transparent pricing with no hidden fees. We only charge if we successfully recover your important data, and we prioritize the recovery of your most critical files first.',
+      listItems: [
+        'No recovery, no fee guarantee',
+        'Free initial assessment',
+        'Secure and confidential process',
+        'Recovery from physically damaged drives',
+        'Quick turnaround options available'
+      ]
+    }
+  ],
+  pricingOptions: [
+    {
+      name: 'Basic Data Recovery',
+      price: '$75',
+      description: 'Recovery of deleted files from healthy drives or simple logical failures.'
+    },
+    {
+      name: 'Standard Data Recovery',
+      price: '$150',
+      description: 'Recovery from corrupted file systems, formatted drives, or moderate logical failures.'
+    },
+    {
+      name: 'Advanced Data Recovery',
+      price: '$250+',
+      description: 'Recovery from complex failures, including some physical damage cases. Price varies based on complexity.'
+    },
+    {
+      name: 'Emergency Recovery',
+      price: '$350+',
+      description: 'Priority service with expedited recovery process for urgent situations.'
+    }
+  ],
+  faqs: [
+    {
+      question: 'Can you recover data from a hard drive that won\'t power on?',
+      answer: 'In many cases, yes. Non-powering drives often have issues with the controller board or other components that can be addressed to access the data.'
+    },
+    {
+      question: 'How long does data recovery typically take?',
+      answer: 'Standard recovery usually takes 2-5 business days. The exact time depends on the type of failure, the size of the drive, and the amount of data to be recovered.'
+    },
+    {
+      question: 'Is my data kept confidential during the recovery process?',
+      answer: 'Absolutely. We maintain strict confidentiality for all customer data. Our technicians follow secure protocols and never access your personal files beyond what\'s necessary for recovery.'
+    },
+    {
+      question: 'What\'s the success rate for data recovery?',
+      answer: 'Our success rate is approximately 85-90% for logical failures and 60-75% for physical failures. However, each case is unique, and we provide a free assessment to give you a more accurate estimate for your specific situation.'
+    }
+  ]
+});
+
+// Add detailed content for hardware-upgrades
+serviceDetails.push({
+  slug: 'hardware-upgrades',
+  title: 'Hardware Upgrades',
+  longDescription: 'Our hardware upgrade service can breathe new life into your existing computer by replacing or adding components to improve performance, storage capacity, and capabilities. From RAM and storage upgrades to graphics cards and processors, we can help you get more out of your current system.',
+  image: '/images/services/hardware-upgrades.svg',
+  imageCaption: 'Professional computer hardware upgrade services',
+  price: '$50+',
+  detailSections: [
+    {
+      title: 'Comprehensive Hardware Upgrade Options',
+      content: 'We offer a wide range of hardware upgrade services to improve your computer\'s performance and extend its useful life. Our technicians can recommend and install the right components based on your needs and budget.',
+      listItems: [
+        'RAM upgrades for better multitasking',
+        'Storage upgrades (HDD to SSD, larger capacity)',
+        'Graphics card upgrades for gaming and design',
+        'Processor (CPU) upgrades',
+        'Cooling system improvements'
+      ]
+    },
+    {
+      title: 'Our Hardware Upgrade Process',
+      content: 'We start with a thorough assessment of your current system to identify upgrade opportunities. We then discuss options and recommendations with you, focusing on the best value improvements. After you approve, we carefully install the new components and ensure everything works properly.'
+    },
+    {
+      title: 'Why Choose Our Hardware Upgrade Service',
+      content: 'Our hardware upgrade service stands out because we focus on cost-effective improvements that give you the best performance boost for your budget. We help you make informed decisions about which upgrades will benefit you most.',
+      listItems: [
+        'Expert component selection advice',
+        'Professional installation',
+        'Performance testing before and after',
+        'Data migration for storage upgrades',
+        'Warranty on parts and labor'
+      ]
+    }
+  ],
+  pricingOptions: [
+    {
+      name: 'RAM Upgrade',
+      price: '$50+',
+      description: 'Installation of additional or replacement RAM modules. Price includes labor only.'
+    },
+    {
+      name: 'SSD Upgrade',
+      price: '$75+',
+      description: 'Installation of SSD and data migration from existing drive. Price includes labor only.'
+    },
+    {
+      name: 'Graphics Card Upgrade',
+      price: '$65+',
+      description: 'Installation of new graphics card and required drivers. Price includes labor only.'
+    },
+    {
+      name: 'Complete System Upgrade',
+      price: '$150+',
+      description: 'Multiple component upgrades including RAM, storage, and other hardware. Price includes labor only.'
+    }
+  ],
+  faqs: [
+    {
+      question: 'How do I know which upgrades my computer needs?',
+      answer: 'We offer a free assessment to identify bottlenecks in your system and recommend the most effective upgrades based on your usage and budget.'
+    },
+    {
+      question: 'Can all computers be upgraded?',
+      answer: 'Most desktop computers can be upgraded extensively. Laptops typically have more limited upgrade options, often restricted to RAM and storage. Some newer laptops and all-in-one computers may have limited or no upgrade potential.'
+    },
+    {
+      question: 'Will I lose my data during a hardware upgrade?',
+      answer: 'For most upgrades like RAM or graphics cards, your data remains untouched. For storage upgrades, we perform a complete data migration to ensure nothing is lost.'
+    },
+    {
+      question: 'Is it worth upgrading an older computer?',
+      answer: 'It depends on the specific computer and your needs. Often, strategic upgrades can significantly extend the useful life of a computer at a fraction of the cost of a new system. We can help you determine if upgrading makes sense for your situation.'
+    }
+  ]
+});
+
+// Add detailed content for tech-consultation
+serviceDetails.push({
+  slug: 'tech-consultation',
+  title: 'Tech Consultation',
+  longDescription: 'Our tech consultation service provides expert guidance to help you make informed technology decisions. Whether you need help choosing the right devices, setting up a home office, or understanding new technologies, our experts are here to provide clear, jargon-free advice tailored to your needs.',
+  image: '/images/services/tech-consultation.svg',
+  imageCaption: 'Expert technology advice and guidance',
+  price: '$65/hour',
+  detailSections: [
+    {
+      title: 'Comprehensive Tech Consultation Services',
+      content: 'Our tech consultation service covers a wide range of technology needs, from personal device selection to home network setup and smart home integration. We help demystify technology and provide recommendations that match your specific requirements and budget.',
+      listItems: [
+        'Technology purchasing advice',
+        'Home network planning and optimization',
+        'Smart home device selection and setup',
+        'Software and app recommendations',
+        'Technology learning and training'
+      ]
+    },
+    {
+      title: 'Our Consultation Process',
+      content: 'We begin by understanding your needs, experience level, and goals. Then we analyze your current setup and provide customized recommendations. Finally, we help implement solutions and provide training if needed, ensuring you feel confident using your technology.'
+    },
+    {
+      title: 'Why Choose Our Tech Consultation Service',
+      content: 'Our tech consultation service stands out because we take the time to understand your unique situation and provide unbiased, practical advice. We focus on solutions that make sense for you, not on selling specific products or services.',
+      listItems: [
+        'Personalized technology roadmaps',
+        'Unbiased product recommendations',
+        'Plain-language explanations',
+        'Follow-up support',
+        'Flexible consultation formats (in-person, phone, or video)'
+      ]
+    }
+  ],
+  pricingOptions: [
+    {
+      name: 'Basic Consultation',
+      price: '$65/hour',
+      description: 'One-on-one technology consultation for specific questions or decisions.'
+    },
+    {
+      name: 'Home Technology Audit',
+      price: '$150',
+      description: 'Comprehensive evaluation of your home technology setup with written recommendations.'
+    },
+    {
+      name: 'Shopping Assistance',
+      price: '$95',
+      description: 'Personalized shopping assistance to help you choose and purchase the right technology.'
+    },
+    {
+      name: 'Ongoing Tech Support',
+      price: '$200/month',
+      description: 'Monthly retainer for regular technology advice and support (4 hours included, then $65/hour).'
+    }
+  ],
+  faqs: [
+    {
+      question: 'What can I ask about during a tech consultation?',
+      answer: 'You can ask about anything technology-related: choosing devices, setting up home networks, smart home technology, software recommendations, learning new technologies, and more. We tailor our advice to your specific needs and knowledge level.'
+    },
+    {
+      question: 'How is a tech consultation different from tech support?',
+      answer: 'Tech support typically helps fix specific technical issues, while a tech consultation focuses on providing advice and recommendations to help you make informed technology decisions and get the most out of your devices.'
+    },
+    {
+      question: 'Do I need to prepare anything for a consultation?',
+      answer: 'It\'s helpful to think about your goals, budget, and any specific questions you have. If we\'ll be discussing your current setup, having information about your devices and how you use them will be beneficial.'
+    },
+    {
+      question: 'Can you help with business technology decisions?',
+      answer: 'Yes, we can provide guidance on small business technology needs, including hardware, software, and security considerations. For larger businesses, we can help identify your requirements and recommend appropriate solutions.'
+    }
+  ]
+});
+
+// Add detailed content for remote-support
+serviceDetails.push({
+  slug: 'remote-support',
+  title: 'Remote Support',
+  longDescription: 'Our remote support service provides quick and convenient technical assistance directly to your device, no matter where you are. Using secure remote access tools, our technicians can diagnose and fix many common computer issues without the need for an in-person visit, saving you time and hassle.',
+  image: '/images/services/remote-support.svg',
+  imageCaption: 'Convenient remote technical support',
+  price: '$45',
+  detailSections: [
+    {
+      title: 'Comprehensive Remote Support Services',
+      content: 'Our remote support service covers a wide range of technical issues that can be resolved without physical access to your device. We use secure, encrypted connections to access your computer with your permission.',
+      listItems: [
+        'Virus and malware removal',
+        'Software installation and updates',
+        'Performance optimization',
+        'Email and internet connection issues',
+        'Printer and peripheral setup'
+      ]
+    },
+    {
+      title: 'How Remote Support Works',
+      content: 'After you contact us, we\'ll send you a secure link to start the remote session. You\'ll be able to see everything our technician is doing on your screen. The session is completely secure, and you can end it at any time with a single click.'
+    },
+    {
+      title: 'Why Choose Our Remote Support',
+      content: 'Our remote support service is the fastest and most convenient way to get help with your computer issues. You don\'t need to leave your home or office, and most issues can be resolved in under an hour.',
+      listItems: [
+        'No need to leave your home or office',
+        'Faster than scheduling an in-person visit',
+        'Available for both Windows and Mac',
+        'Secure, encrypted connections',
+        'Flat-rate pricing with no hidden fees'
+      ]
+    }
+  ],
+  pricingOptions: [
+    {
+      name: 'Basic Remote Support',
+      price: '$45',
+      description: 'Up to 30 minutes of remote support for common issues like software problems or basic troubleshooting.'
+    },
+    {
+      name: 'Advanced Remote Support',
+      price: '$75',
+      description: 'Up to 1 hour of remote support for more complex issues like malware removal or system optimization.'
+    },
+    {
+      name: 'Remote Support Package',
+      price: '$150',
+      description: '3 remote support sessions (1 hour each) to be used within 6 months.'
+    },
+    {
+      name: 'Premium Remote Support',
+      price: '$250',
+      description: 'Unlimited remote support for 3 months, including priority scheduling.'
+    }
+  ],
+  faqs: [
+    {
+      question: 'Is remote support secure?',
+      answer: 'Yes, we use enterprise-grade encryption for all remote sessions. You can see everything our technician is doing, and you can end the session at any time with a single click.'
+    },
+    {
+      question: 'What do I need for a remote support session?',
+      answer: 'You\'ll need a working internet connection, the ability to download and run our secure remote support software, and a phone or another device to communicate with our technician during the session.'
+    },
+    {
+      question: 'Can all computer problems be fixed remotely?',
+      answer: 'While many software-related issues can be resolved remotely, some hardware problems may require an in-person visit. During our initial assessment, we\'ll let you know if your issue can be fixed remotely or if an on-site visit is needed.'
+    },
+    {
+      question: 'What if my issue isn\'t fixed during the remote session?',
+      answer: 'If we\'re unable to resolve your issue remotely, we\'ll provide a full refund and recommend next steps, which may include an in-person service call if appropriate.'
+    }
+  ]
+});
+
+// Update remaining services to exclude remote-support
+export const remainingServices: string[] = [];
 
 // This function returns either a real service detail or generates a placeholder
 export function getServiceDetail(slug: string): ServiceDetail {

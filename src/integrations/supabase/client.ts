@@ -2,12 +2,14 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
 
-// Get environment variables with fallback for safety
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://sldrxhkkoykvadgwqmuo.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNsZHJ4aGtrb3lrdmFkZ3dxbXVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI0MzY0MjIsImV4cCI6MjA1ODAxMjQyMn0.kdKpmNnAYjCEBqNI3WPPXhQPRP_1d679pbINIc8EChY";
+// Get environment variables - no fallbacks in production
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Log which values we're using (for debugging)
-console.log('Using Supabase URL (integration):', SUPABASE_URL);
+// Verify environment variables are set
+if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+  throw new Error('Missing Supabase environment variables. Please check your .env file.');
+}
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";

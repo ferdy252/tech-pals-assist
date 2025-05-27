@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
-  const currentYear = new Date().getFullYear();
+  const currentDate = new Date();
+  const currentYear = 2024; // Fixed year
+  const currentMonth = currentDate.getMonth();
   
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -14,7 +16,7 @@ const PrivacyPolicy = () => {
         <div className="max-w-4xl mx-auto px-4 py-12">
           <h1 className="text-3xl font-bold mb-8">{t('privacyPolicy.title')}</h1>
           <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-            {t('privacyPolicy.lastUpdated')} {currentYear}
+            {t('privacyPolicy.lastUpdated', { month: t(`months.${currentMonth}`), year: currentYear })}
           </p>
           
           <section className="mb-8">
@@ -34,16 +36,18 @@ const PrivacyPolicy = () => {
             </p>
             <h3 className="text-xl font-medium mb-2">{t('privacyPolicy.sections.informationCollect.personalTitle')}</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.informationCollect.personalItems', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.informationCollect.personalItems', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.informationCollect.personalItems', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
             
             <h3 className="text-xl font-medium mb-2">{t('privacyPolicy.sections.informationCollect.nonPersonalTitle')}</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.informationCollect.nonPersonalItems', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.informationCollect.nonPersonalItems', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.informationCollect.nonPersonalItems', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
           </section>
           
@@ -53,9 +57,10 @@ const PrivacyPolicy = () => {
               {t('privacyPolicy.sections.howCollect.intro')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.howCollect.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.howCollect.items', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.howCollect.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
           </section>
           
@@ -65,9 +70,10 @@ const PrivacyPolicy = () => {
               {t('privacyPolicy.sections.howUse.intro')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.howUse.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.howUse.items', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.howUse.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
           </section>
           
@@ -80,9 +86,10 @@ const PrivacyPolicy = () => {
               {t('privacyPolicy.sections.cookies.content2')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.cookies.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.cookies.items', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.cookies.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
             <p className="mb-4">
               {t('privacyPolicy.sections.cookies.content3')}
@@ -95,9 +102,12 @@ const PrivacyPolicy = () => {
               {t('privacyPolicy.sections.disclosure.intro')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.disclosure.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.disclosure.items', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.disclosure.items', { returnObjects: true }) as Array<{title: string, description: string}>).map((item, index) => (
+                  <li key={index}>
+                    <span className="font-semibold">{item.title}:</span> {item.description}
+                  </li>
+                ))}
             </ul>
           </section>
           
@@ -114,9 +124,10 @@ const PrivacyPolicy = () => {
               {t('privacyPolicy.sections.rights.content1')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('privacyPolicy.sections.rights.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('privacyPolicy.sections.rights.items', { returnObjects: true })) && 
+                (t('privacyPolicy.sections.rights.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
             <p className="mb-4">
               {t('privacyPolicy.sections.rights.content2')}

@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 const TermsOfService = () => {
   const { t } = useTranslation();
-  const currentYear = new Date().getFullYear();
+  const currentDate = new Date();
+  const currentYear = 2024; // Fixed year
+  const currentMonth = currentDate.getMonth();
   
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -14,7 +16,7 @@ const TermsOfService = () => {
         <div className="max-w-4xl mx-auto px-4 py-12">
           <h1 className="text-3xl font-bold mb-8">{t('termsOfService.title')}</h1>
           <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-            {t('termsOfService.lastUpdated')} {currentYear}
+            {t('termsOfService.lastUpdated', { month: t(`months.${currentMonth}`), year: currentYear })}
           </p>
           
           <section className="mb-8">
@@ -86,9 +88,10 @@ const TermsOfService = () => {
               {t('termsOfService.sections.userConduct.intro')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('termsOfService.sections.userConduct.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('termsOfService.sections.userConduct.items', { returnObjects: true })) && 
+                (t('termsOfService.sections.userConduct.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
           </section>
           
@@ -98,9 +101,10 @@ const TermsOfService = () => {
               {t('termsOfService.sections.limitation.intro')}
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              {(t('termsOfService.sections.limitation.items', { returnObjects: true }) as string[]).map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+              {Array.isArray(t('termsOfService.sections.limitation.items', { returnObjects: true })) && 
+                (t('termsOfService.sections.limitation.items', { returnObjects: true }) as string[]).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
             </ul>
           </section>
           

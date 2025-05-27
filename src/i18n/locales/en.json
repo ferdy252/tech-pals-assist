@@ -312,6 +312,20 @@
     "location": "Scranton, PA",
     "phoneNumber": "570-535-2472"
   },
+  "months": {
+    "0": "January",
+    "1": "February",
+    "2": "March",
+    "3": "April",
+    "4": "May",
+    "5": "June",
+    "6": "July",
+    "7": "August",
+    "8": "September",
+    "9": "October",
+    "10": "November",
+    "11": "December"
+  },
   "auth": {
     "signIn": {
       "title": "Sign in to your account",
@@ -368,7 +382,7 @@
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last Updated: May",
+    "lastUpdated": "Last Updated: May 2024",
     "sections": {
       "introduction": {
         "title": "Introduction",
@@ -432,10 +446,22 @@
         "title": "Disclosure of Your Information",
         "intro": "We may disclose your personal information in the following situations:",
         "items": [
-          "<strong>Service Providers:</strong> We may share your information with third-party vendors, service providers, and contractors who perform services for us or on our behalf.",
-          "<strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.",
-          "<strong>Legal Requirements:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.",
-          "<strong>Protection of Rights:</strong> We may disclose your information to protect and defend our rights, property, or safety, or those of our users or third parties."
+          {
+            "title": "Service Providers",
+            "description": "We may share your information with third-party vendors, service providers, and contractors who perform services for us or on our behalf."
+          },
+          {
+            "title": "Business Transfers",
+            "description": "If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction."
+          },
+          {
+            "title": "Legal Requirements",
+            "description": "We may disclose your information if required to do so by law or in response to valid requests by public authorities."
+          },
+          {
+            "title": "Protection of Rights",
+            "description": "We may disclose your information to protect and defend our rights, property, or safety, or those of our users or third parties."
+          }
         ]
       },
       "security": {
@@ -473,7 +499,7 @@
   },
   "termsOfService": {
     "title": "Terms of Service",
-    "lastUpdated": "Last Updated: May",
+    "lastUpdated": "Last Updated: May 2024",
     "sections": {
       "introduction": {
         "title": "Introduction",
