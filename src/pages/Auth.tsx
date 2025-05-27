@@ -5,8 +5,9 @@ import { useToast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Computer } from 'lucide-react';
+import { Computer, Mail, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -14,8 +15,10 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [verificationError, setVerificationError] = useState(false);
+  const [resendingVerification, setResendingVerification] = useState(false);
   
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, resendVerificationEmail } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -23,11 +26,18 @@ const Auth = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setVerificationError(false);
 
     try {
       if (isLogin) {
         const { error } = await signIn(email, password);
-        if (error) throw error;
+        if (error) {
+          // Check if this is a verification error
+          if (error.message && error.message.includes('verify your email')) {
+            setVerificationError(true);
+          }
+          throw error;
+        }
       } else {
         const { error } = await signUp(email, password, fullName);
         if (error) throw error;
@@ -47,6 +57,41 @@ const Auth = () => {
       setLoading(false);
     }
   };
+  
+  const handleResendVerification = async () => {
+    if (!email) {
+      toast({
+        title: 'Email Required',
+        description: 'Please enter your email address to resend the verification.',
+        variant: 'destructive',
+      });
+      return;
+    }
+    
+    setResendingVerification(true);
+    
+    try {
+      const { error } = await resendVerificationEmail(email);
+      
+      if (error) throw error;
+      
+      toast({
+        title: 'Verification Email Sent',
+        description: 'Please check your inbox for the verification link.',
+      });
+      
+      // Reset verification error state
+      setVerificationError(false);
+    } catch (error: any) {
+      toast({
+        title: 'Failed to Resend Verification',
+        description: error.message || 'An error occurred. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setResendingVerification(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4 transition-colors duration-300">
@@ -63,6 +108,24 @@ const Auth = () => {
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
           {isLogin ? t('auth.signIn.title') : t('auth.signUp.title')}
         </h2>
+        
+        {verificationError && (
+          <Alert className="mb-6 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
+            <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-500" />
+            <AlertTitle className="text-amber-800 dark:text-amber-500">Email Verification Required</AlertTitle>
+            <AlertDescription className="text-amber-700 dark:text-amber-400">
+              Your email needs to be verified before you can sign in. 
+              <Button 
+                variant="link" 
+                className="text-amber-800 dark:text-amber-300 p-0 h-auto font-semibold hover:underline" 
+                onClick={handleResendVerification}
+                disabled={resendingVerification}
+              >
+                {resendingVerification ? 'Sending...' : 'Resend verification email'}
+              </Button>
+            </AlertDescription>
+          </Alert>
+        )}
         
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
