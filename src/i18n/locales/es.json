@@ -365,5 +365,190 @@
       "instructions": "Por favor, revisa tu correo electrónico y haz clic en el enlace para verificar tu cuenta.",
       "backToLogin": "Volver al inicio de sesión"
     }
+  },
+  "privacyPolicy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última Actualización: Mayo",
+    "sections": {
+      "introduction": {
+        "title": "Introducción",
+        "content1": "TechPals (\"nosotros\", \"nuestro\" o \"nos\") respeta su privacidad y está comprometido a proteger su información personal. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información cuando utiliza nuestro sitio web y servicios.",
+        "content2": "Por favor, lea esta Política de Privacidad cuidadosamente. Al acceder o utilizar nuestros servicios, usted reconoce que ha leído, entendido y acepta estar sujeto a esta Política de Privacidad. Si no está de acuerdo con nuestras políticas, por favor no utilice nuestros servicios."
+      },
+      "informationCollect": {
+        "title": "Información que Recopilamos",
+        "intro": "Recopilamos varios tipos de información de y sobre los usuarios de nuestros servicios, incluyendo:",
+        "personalTitle": "Información Personal",
+        "personalItems": [
+          "Información de contacto (como nombre, dirección de correo electrónico, número de teléfono y dirección)",
+          "Información de cuenta (como credenciales de inicio de sesión e información de perfil)",
+          "Detalles de solicitud de servicio (incluidas descripciones de problemas técnicos)",
+          "Información de reserva de citas (incluidas fechas y horarios preferidos)",
+          "Información de pago (procesada a través de procesadores de pago de terceros seguros)"
+        ],
+        "nonPersonalTitle": "Información No Personal",
+        "nonPersonalItems": [
+          "Información del dispositivo (como su dirección IP, tipo de navegador y sistema operativo)",
+          "Datos de uso (como páginas visitadas, tiempo dedicado en las páginas y enlaces en los que se ha hecho clic)",
+          "Cookies y tecnologías de seguimiento similares"
+        ]
+      },
+      "howCollect": {
+        "title": "Cómo Recopilamos Información",
+        "intro": "Recopilamos información de las siguientes maneras:",
+        "items": [
+          "Directamente de usted cuando crea una cuenta, envía una solicitud de servicio, reserva una cita o nos contacta",
+          "Automáticamente mientras navega por nuestro sitio web utilizando cookies y tecnologías similares",
+          "De proveedores de servicios externos que nos ayudan a operar nuestro negocio"
+        ]
+      },
+      "howUse": {
+        "title": "Cómo Utilizamos Su Información",
+        "intro": "Utilizamos la información que recopilamos para:",
+        "items": [
+          "Proporcionar, mantener y mejorar nuestros servicios",
+          "Procesar y cumplir con sus solicitudes de servicio y citas",
+          "Comunicarnos con usted sobre su cuenta, solicitudes de servicio y citas",
+          "Enviarle avisos técnicos, actualizaciones, alertas de seguridad y mensajes de soporte",
+          "Responder a sus comentarios, preguntas y solicitudes de servicio al cliente",
+          "Monitorear y analizar tendencias, uso y actividades en relación con nuestros servicios",
+          "Detectar, prevenir y abordar problemas técnicos, fraudes y otras actividades ilegales",
+          "Personalizar su experiencia y entregar contenido relevante a sus intereses"
+        ]
+      },
+      "cookies": {
+        "title": "Cookies y Tecnologías Similares",
+        "content1": "Utilizamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro sitio web y almacenar cierta información. Las cookies son archivos con una pequeña cantidad de datos que pueden incluir un identificador único anónimo. Las cookies se envían a su navegador desde un sitio web y se almacenan en su dispositivo.",
+        "content2": "Utilizamos cookies para los siguientes propósitos:",
+        "items": [
+          "Para mantenerlo conectado y recordar sus preferencias",
+          "Para entender cómo utiliza nuestro sitio web",
+          "Para mejorar su experiencia de usuario",
+          "Para ayudarnos a mejorar nuestros servicios"
+        ],
+        "content3": "Puede instruir a su navegador para que rechace todas las cookies o para que indique cuándo se envía una cookie. Sin embargo, si no acepta cookies, es posible que no pueda utilizar algunas partes de nuestro servicio."
+      },
+      "disclosure": {
+        "title": "Divulgación de Su Información",
+        "intro": "Podemos divulgar su información personal en las siguientes situaciones:",
+        "items": [
+          "<strong>Proveedores de Servicios:</strong> Podemos compartir su información con vendedores, proveedores de servicios y contratistas externos que realizan servicios para nosotros o en nuestro nombre.",
+          "<strong>Transferencias Comerciales:</strong> Si estamos involucrados en una fusión, adquisición o venta de todos o una parte de nuestros activos, su información puede ser transferida como parte de esa transacción.",
+          "<strong>Requisitos Legales:</strong> Podemos divulgar su información si es requerido por ley o en respuesta a solicitudes válidas de autoridades públicas.",
+          "<strong>Protección de Derechos:</strong> Podemos divulgar su información para proteger y defender nuestros derechos, propiedad o seguridad, o los de nuestros usuarios o terceros."
+        ]
+      },
+      "security": {
+        "title": "Seguridad de Datos",
+        "content": "Hemos implementado medidas de seguridad técnicas y organizativas apropiadas diseñadas para proteger la seguridad de cualquier información personal que procesamos. Sin embargo, recuerde también que no podemos garantizar que Internet sea 100% seguro. Aunque haremos nuestro mejor esfuerzo para proteger su información personal, la transmisión de información personal hacia y desde nuestros servicios es bajo su propio riesgo."
+      },
+      "rights": {
+        "title": "Sus Derechos de Protección de Datos",
+        "content1": "Dependiendo de su ubicación, puede tener los siguientes derechos con respecto a su información personal:",
+        "items": [
+          "El derecho a acceder, actualizar o eliminar su información",
+          "El derecho a la rectificación (para corregir o actualizar su información)",
+          "El derecho a oponerse al procesamiento de su información",
+          "El derecho a la portabilidad de datos (para recibir una copia de su información)",
+          "El derecho a retirar el consentimiento"
+        ],
+        "content2": "Para ejercer cualquiera de estos derechos, contáctenos utilizando la información de contacto proporcionada a continuación."
+      },
+      "children": {
+        "title": "Privacidad de los Niños",
+        "content": "Nuestros servicios no están destinados a personas menores de 18 años. No recopilamos a sabiendas información personal de niños menores de 18 años. Si usted es un padre o tutor y sabe que su hijo nos ha proporcionado información personal, contáctenos para que podamos tomar las medidas necesarias."
+      },
+      "changes": {
+        "title": "Cambios a Esta Política de Privacidad",
+        "content": "Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página y actualizando la fecha de \"Última Actualización\" en la parte superior de esta página. Se le aconseja revisar esta Política de Privacidad periódicamente para cualquier cambio. Los cambios a esta Política de Privacidad son efectivos cuando se publican en esta página."
+      },
+      "contact": {
+        "title": "Contáctenos",
+        "content": "Si tiene alguna pregunta sobre esta Política de Privacidad, contáctenos en:",
+        "email": "Correo electrónico:",
+        "phone": "Teléfono:",
+        "address": "Dirección:"
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última Actualización: Mayo",
+    "sections": {
+      "introduction": {
+        "title": "Introducción",
+        "content": "Bienvenido a TechPals. Estos Términos de Servicio (\"Términos\") rigen su uso de nuestro sitio web y servicios. Al acceder o utilizar nuestros servicios, acepta estar sujeto a estos Términos. Si no está de acuerdo con alguna parte de los Términos, no puede acceder a nuestros servicios."
+      },
+      "servicesDescription": {
+        "title": "Descripción de Servicios",
+        "content": "TechPals proporciona servicios de soporte tecnológico que incluyen, entre otros, reparación de computadoras, soporte para dispositivos móviles, configuración de redes domésticas, soluciones de seguridad y recuperación de datos. Nuestros servicios están disponibles para individuos y empresas a través de citas en persona, asistencia remota y visitas in situ."
+      },
+      "userAccounts": {
+        "title": "Cuentas de Usuario",
+        "content1": "Cuando crea una cuenta con nosotros, debe proporcionar información precisa, completa y actualizada. Usted es responsable de salvaguardar las credenciales de su cuenta y de cualquier actividad o acción bajo su cuenta. Debe notificarnos inmediatamente al darse cuenta de cualquier violación de seguridad o uso no autorizado de su cuenta.",
+        "content2": "Nos reservamos el derecho de desactivar cualquier cuenta de usuario si, en nuestra opinión, ha violado alguna disposición de estos Términos."
+      },
+      "appointments": {
+        "title": "Citas de Servicio y Solicitudes",
+        "content": "Al reservar una cita o enviar una solicitud de servicio, acepta proporcionar información precisa sobre sus problemas técnicos y requisitos. Haremos esfuerzos razonables para abordar sus necesidades técnicas, pero no podemos garantizar que todos los problemas puedan resolverse.",
+        "cancellationTitle": "Política de Cancelación",
+        "cancellationContent": "Si necesita cancelar o reprogramar una cita, hágalo con al menos 24 horas de anticipación. Las cancelaciones tardías o no presentarse pueden resultar en una tarifa de cancelación igual al 50% del costo del servicio."
+      },
+      "payment": {
+        "title": "Términos de Pago",
+        "content": "El pago se debe al completar los servicios, a menos que se especifique lo contrario. Aceptamos las principales tarjetas de crédito, efectivo y otros métodos de pago según se especifique en el momento del servicio. Los precios de los servicios están sujetos a cambios sin previo aviso.",
+        "refundTitle": "Política de Reembolso",
+        "refundContent": "Si no está satisfecho con nuestros servicios, contáctenos dentro de los 7 días posteriores a la finalización del servicio. Haremos esfuerzos razonables para abordar sus preocupaciones. Los reembolsos se proporcionan a nuestra discreción y pueden ofrecerse como créditos de servicio en lugar de reembolsos monetarios."
+      },
+      "guarantees": {
+        "title": "Garantías y Limitaciones de Servicio",
+        "content1": "Nos esforzamos por proporcionar servicios de alta calidad, pero no podemos garantizar que nuestros servicios estén libres de errores o ininterrumpidos. No somos responsables de ninguna pérdida de datos que pueda ocurrir durante el servicio. Recomendamos encarecidamente que respalde sus datos antes de que realicemos cualquier servicio.",
+        "content2": "Para servicios de recuperación de datos, no podemos garantizar la recuperación exitosa de todos los datos. Las tasas de recuperación dependen del alcance y la naturaleza del daño o corrupción."
+      },
+      "intellectualProperty": {
+        "title": "Propiedad Intelectual",
+        "content": "El sitio web de TechPals, el logotipo y todo el contenido, características y funcionalidad son propiedad de TechPals y están protegidos por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. No puede reproducir, distribuir, modificar, crear trabajos derivados, mostrar públicamente, realizar públicamente, republicar, descargar, almacenar o transmitir ninguno de nuestros materiales sin nuestro consentimiento previo por escrito."
+      },
+      "userConduct": {
+        "title": "Conducta del Usuario",
+        "intro": "Usted acepta no utilizar nuestros servicios:",
+        "items": [
+          "De cualquier manera que viole cualquier ley o regulación federal, estatal, local o internacional aplicable",
+          "Para transmitir cualquier material que sea difamatorio, obsceno u ofensivo",
+          "Para hacerse pasar o intentar hacerse pasar por TechPals, un empleado de TechPals u otro usuario",
+          "Para participar en cualquier conducta que restrinja o inhiba el uso o disfrute de nuestros servicios por parte de cualquier persona",
+          "Para intentar obtener acceso no autorizado a nuestros sistemas o cuentas de usuario"
+        ]
+      },
+      "limitation": {
+        "title": "Limitación de Responsabilidad",
+        "intro": "En la máxima medida permitida por la ley aplicable, TechPals no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo, incluidos, entre otros, daños por pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles, resultantes de:",
+        "items": [
+          "Su uso o incapacidad para usar nuestros servicios",
+          "Cualquier acceso no autorizado o uso de nuestros servidores y/o cualquier información personal almacenada en ellos",
+          "Cualquier interrupción o cese de transmisión hacia o desde nuestros servicios",
+          "Cualquier error, virus u otros componentes dañinos que puedan transmitirse a través de nuestros servicios"
+        ]
+      },
+      "indemnification": {
+        "title": "Indemnización",
+        "content": "Usted acepta defender, indemnizar y mantener indemne a TechPals, sus afiliados y sus respectivos funcionarios, directores, empleados y agentes de y contra cualquier reclamo, responsabilidad, daño, juicio, premio, pérdida, costo, gasto o tarifa (incluidos honorarios razonables de abogados) que surjan de o relacionados con su violación de estos Términos o su uso de nuestros servicios."
+      },
+      "governingLaw": {
+        "title": "Ley Aplicable",
+        "content": "Estos Términos se regirán e interpretarán de acuerdo con las leyes del Estado de Pensilvania, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier acción legal o procedimiento relacionado con su acceso o uso de nuestros servicios se instituirá en un tribunal estatal o federal en Pensilvania."
+      },
+      "changes": {
+        "title": "Cambios a Estos Términos",
+        "content": "Podemos revisar estos Términos en cualquier momento sin previo aviso. Al continuar accediendo o utilizando nuestros servicios después de que cualquier revisión entre en vigencia, acepta estar sujeto a los Términos revisados."
+      },
+      "contact": {
+        "title": "Contáctenos",
+        "content": "Si tiene alguna pregunta sobre estos Términos, contáctenos en:",
+        "email": "Correo electrónico:",
+        "phone": "Teléfono:",
+        "address": "Dirección:"
+      }
+    }
   }
 }

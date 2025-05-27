@@ -20,6 +20,8 @@ import ResetPassword from "./pages/ResetPassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import VerificationPending from "./pages/VerificationPending";
 import AppointmentBooking from "./pages/AppointmentBooking";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +65,9 @@ const App = () => (
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/verification-pending" element={<VerificationPending />} />
+              {/* Legal Routes */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AuthProvider>

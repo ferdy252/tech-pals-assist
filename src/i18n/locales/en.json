@@ -365,5 +365,190 @@
       "instructions": "Please check your email and click the link to verify your account.",
       "backToLogin": "Back to login"
     }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: May",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content1": "TechPals (\"we,\" \"our,\" or \"us\") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.",
+        "content2": "Please read this Privacy Policy carefully. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with our policies, please do not use our services."
+      },
+      "informationCollect": {
+        "title": "Information We Collect",
+        "intro": "We collect several types of information from and about users of our services, including:",
+        "personalTitle": "Personal Information",
+        "personalItems": [
+          "Contact information (such as name, email address, phone number, and address)",
+          "Account information (such as login credentials and profile information)",
+          "Service request details (including descriptions of technical issues)",
+          "Appointment booking information (including preferred dates and times)",
+          "Payment information (processed through secure third-party payment processors)"
+        ],
+        "nonPersonalTitle": "Non-Personal Information",
+        "nonPersonalItems": [
+          "Device information (such as your IP address, browser type, and operating system)",
+          "Usage data (such as pages visited, time spent on pages, and links clicked)",
+          "Cookies and similar tracking technologies"
+        ]
+      },
+      "howCollect": {
+        "title": "How We Collect Information",
+        "intro": "We collect information in the following ways:",
+        "items": [
+          "Directly from you when you create an account, submit a service request, book an appointment, or contact us",
+          "Automatically as you navigate through our website using cookies and similar technologies",
+          "From third-party service providers that help us operate our business"
+        ]
+      },
+      "howUse": {
+        "title": "How We Use Your Information",
+        "intro": "We use the information we collect to:",
+        "items": [
+          "Provide, maintain, and improve our services",
+          "Process and fulfill your service requests and appointments",
+          "Communicate with you about your account, service requests, and appointments",
+          "Send you technical notices, updates, security alerts, and support messages",
+          "Respond to your comments, questions, and customer service requests",
+          "Monitor and analyze trends, usage, and activities in connection with our services",
+          "Detect, prevent, and address technical issues, fraud, and other illegal activities",
+          "Personalize your experience and deliver content relevant to your interests"
+        ]
+      },
+      "cookies": {
+        "title": "Cookies and Similar Technologies",
+        "content1": "We use cookies and similar tracking technologies to track activity on our website and store certain information. Cookies are files with a small amount of data that may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device.",
+        "content2": "We use cookies for the following purposes:",
+        "items": [
+          "To keep you signed in and remember your preferences",
+          "To understand how you use our website",
+          "To enhance your user experience",
+          "To help us improve our services"
+        ],
+        "content3": "You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service."
+      },
+      "disclosure": {
+        "title": "Disclosure of Your Information",
+        "intro": "We may disclose your personal information in the following situations:",
+        "items": [
+          "<strong>Service Providers:</strong> We may share your information with third-party vendors, service providers, and contractors who perform services for us or on our behalf.",
+          "<strong>Business Transfers:</strong> If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.",
+          "<strong>Legal Requirements:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.",
+          "<strong>Protection of Rights:</strong> We may disclose your information to protect and defend our rights, property, or safety, or those of our users or third parties."
+        ]
+      },
+      "security": {
+        "title": "Data Security",
+        "content": "We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our services is at your own risk."
+      },
+      "rights": {
+        "title": "Your Data Protection Rights",
+        "content1": "Depending on your location, you may have the following rights regarding your personal information:",
+        "items": [
+          "The right to access, update, or delete your information",
+          "The right to rectification (to correct or update your information)",
+          "The right to object to processing of your information",
+          "The right to data portability (to receive a copy of your information)",
+          "The right to withdraw consent"
+        ],
+        "content2": "To exercise any of these rights, please contact us using the contact information provided below."
+      },
+      "children": {
+        "title": "Children's Privacy",
+        "content": "Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we can take necessary actions."
+      },
+      "changes": {
+        "title": "Changes to This Privacy Policy",
+        "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date at the top of this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at:",
+        "email": "Email:",
+        "phone": "Phone:",
+        "address": "Address:"
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: May",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "Welcome to TechPals. These Terms of Service (\"Terms\") govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access our services."
+      },
+      "servicesDescription": {
+        "title": "Services Description",
+        "content": "TechPals provides technology support services including but not limited to computer repair, mobile device support, home network setup, security solutions, and data recovery. Our services are available to individuals and businesses through in-person appointments, remote assistance, and on-site visits."
+      },
+      "userAccounts": {
+        "title": "User Accounts",
+        "content1": "When you create an account with us, you must provide accurate, complete, and current information. You are responsible for safeguarding your account credentials and for any activities or actions under your account. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.",
+        "content2": "We reserve the right to disable any user account if, in our opinion, you have violated any provision of these Terms."
+      },
+      "appointments": {
+        "title": "Service Appointments and Requests",
+        "content": "By booking an appointment or submitting a service request, you agree to provide accurate information about your technical issues and requirements. We will make reasonable efforts to address your technical needs, but we cannot guarantee that all issues can be resolved.",
+        "cancellationTitle": "Cancellation Policy",
+        "cancellationContent": "If you need to cancel or reschedule an appointment, please do so at least 24 hours in advance. Late cancellations or no-shows may result in a cancellation fee equal to 50% of the service cost."
+      },
+      "payment": {
+        "title": "Payment Terms",
+        "content": "Payment is due upon completion of services unless otherwise specified. We accept major credit cards, cash, and other payment methods as specified at the time of service. Prices for services are subject to change without notice.",
+        "refundTitle": "Refund Policy",
+        "refundContent": "If you are not satisfied with our services, please contact us within 7 days of service completion. We will make reasonable efforts to address your concerns. Refunds are provided at our discretion and may be offered as service credits rather than monetary refunds."
+      },
+      "guarantees": {
+        "title": "Service Guarantees and Limitations",
+        "content1": "We strive to provide high-quality services, but we cannot guarantee that our services will be error-free or uninterrupted. We are not responsible for any data loss that may occur during service. We strongly recommend that you back up your data before we perform any services.",
+        "content2": "For data recovery services, we cannot guarantee successful recovery of all data. Recovery rates depend on the extent and nature of the damage or corruption."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "content": "The TechPals website, logo, and all content, features, and functionality are owned by TechPals and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of our materials without our prior written consent."
+      },
+      "userConduct": {
+        "title": "User Conduct",
+        "intro": "You agree not to use our services:",
+        "items": [
+          "In any way that violates any applicable federal, state, local, or international law or regulation",
+          "To transmit any material that is defamatory, obscene, or offensive",
+          "To impersonate or attempt to impersonate TechPals, a TechPals employee, or another user",
+          "To engage in any conduct that restricts or inhibits anyone's use or enjoyment of our services",
+          "To attempt to gain unauthorized access to our systems or user accounts"
+        ]
+      },
+      "limitation": {
+        "title": "Limitation of Liability",
+        "intro": "To the fullest extent permitted by applicable law, TechPals shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to, damages for loss of profits, goodwill, use, data, or other intangible losses, resulting from:",
+        "items": [
+          "Your use or inability to use our services",
+          "Any unauthorized access to or use of our servers and/or any personal information stored therein",
+          "Any interruption or cessation of transmission to or from our services",
+          "Any bugs, viruses, or other harmful components that may be transmitted through our services"
+        ]
+      },
+      "indemnification": {
+        "title": "Indemnification",
+        "content": "You agree to defend, indemnify, and hold harmless TechPals, its affiliates, and their respective officers, directors, employees, and agents from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of our services."
+      },
+      "governingLaw": {
+        "title": "Governing Law",
+        "content": "These Terms shall be governed by and construed in accordance with the laws of the Commonwealth of Pennsylvania, without regard to its conflict of law provisions. Any legal action or proceeding relating to your access to or use of our services shall be instituted in a state or federal court in Pennsylvania."
+      },
+      "changes": {
+        "title": "Changes to These Terms",
+        "content": "We may revise these Terms at any time without notice. By continuing to access or use our services after any revisions become effective, you agree to be bound by the revised Terms."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about these Terms, please contact us at:",
+        "email": "Email:",
+        "phone": "Phone:",
+        "address": "Address:"
+      }
+    }
   }
 }
