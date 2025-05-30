@@ -45,9 +45,35 @@ const ResetPassword = () => {
     validateToken();
   }, [searchParams]);
 
+  const validatePassword = (password: string) => {
+    // At least 8 characters, 1 number, 1 uppercase, 1 lowercase, 1 special character
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+    if (password.length < 8) {
+      toast({
+        title: 'Password too short',
+        description: 'Password must be at least 8 characters long.',
+        variant: 'destructive',
+      });
+      return false;
+    }
+    
+    if (!passwordRegex.test(password)) {
+      toast({
+        title: 'Password requirements not met',
+        description: 'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.',
+        variant: 'destructive',
+      });
+      return false;
+    }
+    
+    return true;
+  };
+
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate passwords match
     if (password !== confirmPassword) {
       toast({
         title: 'Passwords do not match',
@@ -56,13 +82,9 @@ const ResetPassword = () => {
       });
       return;
     }
-
-    if (password.length < 6) {
-      toast({
-        title: 'Password too short',
-        description: 'Password must be at least 6 characters long.',
-        variant: 'destructive',
-      });
+    
+    // Validate password strength
+    if (!validatePassword(password)) {
       return;
     }
 
@@ -181,9 +203,14 @@ const ResetPassword = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={8}
               placeholder="••••••••"
               className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+              title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
             />
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Password must be at least 8 characters and include uppercase, lowercase, number, and special character.
+            </p>
           </div>
           
           <div className="space-y-2">
@@ -194,8 +221,9 @@ const ResetPassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+              minLength={8}
               placeholder="••••••••"
-              className="mb-2 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+              className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
             />
           </div>
           

@@ -5,15 +5,14 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { format, addDays, addWeeks, startOfDay, setHours, setMinutes, isBefore } from 'date-fns';
+import { format, startOfDay, isBefore } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { CalendarIcon, Clock, ArrowLeft, User, Mail, Phone } from 'lucide-react';
+import { CalendarIcon, Clock, ArrowLeft, User, Phone } from 'lucide-react';
 import { getServiceDetail } from '@/pages/services/serviceData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -45,10 +44,6 @@ const AppointmentBooking = () => {
   const [loading, setLoading] = useState(false);
   const [loadingServices, setLoadingServices] = useState(true);
   
-  // Guest information fields
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   
   // Parse URL parameters to get pre-selected service
   useEffect(() => {
@@ -205,29 +200,6 @@ const AppointmentBooking = () => {
       return;
     }
     
-    // If user is not logged in, validate guest information
-    if (!user) {
-      if (!name || !email) {
-        toast({
-          title: 'Missing information',
-          description: 'Please provide your name and email address.',
-          variant: 'destructive',
-        });
-        return;
-      }
-      
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        toast({
-          title: 'Invalid email',
-          description: 'Please provide a valid email address.',
-          variant: 'destructive',
-        });
-        return;
-      }
-    }
-    
     setLoading(true);
     
     try {
@@ -247,28 +219,12 @@ const AppointmentBooking = () => {
       // Get service details
       const service = services.find(s => s.id === selectedService);
       
-      // First check if appointments table exists
-      const { error: tableCheckError } = await supabase
-        .from('appointments')
-        .select('count')
-        .limit(1)
-        .single();
-      
-      // If table doesn't exist, show error
-      if (tableCheckError) {
-        console.error('Appointments table does not exist:', tableCheckError.message);
-        toast({
-          title: 'System error',
-          description: 'The appointment system is not yet fully set up. Please try again later or contact support.',
-          variant: 'destructive',
-        });
-        setLoading(false);
-        return;
-      }
+      // We know the appointments table exists, so we'll proceed directly to creating the appointment
+      // If there's an error during insertion, we'll handle it in the catch block
       
       // Create appointment in database
       const appointmentData = {
-        user_id: user?.id || null,
+        user_id: user?.id,
         service_id: selectedService,
         service_name: service?.name,
         appointment_date: appointmentDate.toISOString(),
@@ -276,15 +232,6 @@ const AppointmentBooking = () => {
         issue_description: issue,
         status: 'scheduled',
       };
-      
-      // Add guest information if user is not logged in
-      if (!user) {
-        Object.assign(appointmentData, {
-          guest_name: name,
-          guest_email: email,
-          guest_phone: phone || null,
-        });
-      }
       
       const { data, error } = await supabase
         .from('appointments')
@@ -298,28 +245,25 @@ const AppointmentBooking = () => {
         description: `Your appointment has been scheduled for ${format(appointmentDate, 'EEEE, MMMM d, yyyy')} at ${selectedTime}.`,
       });
       
-      // Redirect to confirmation page or dashboard if logged in
-      if (user) {
-        navigate('/dashboard', { state: { activeTab: 'appointments' } });
-      } else {
-        // For guests, show a confirmation message and clear the form
-        // We could also create a dedicated confirmation page in the future
-        setSelectedService('');
-        setSelectedDate(undefined);
-        setSelectedTime('');
-        setIssue('');
-        setName('');
-        setEmail('');
-        setPhone('');
-        
-        // Scroll to top to show the success message
-        window.scrollTo(0, 0);
-      }
+      // Redirect to dashboard after booking
+      navigate('/dashboard', { state: { activeTab: 'appointments' } });
     } catch (error: any) {
       console.error('Error scheduling appointment:', error.message);
+      
+      let errorMessage = 'There was a problem scheduling your appointment.';
+      
+      // Check for specific error types
+      if (error.message.includes('permission denied')) {
+        errorMessage = 'You need to be signed in to book appointments. Please sign in first.';
+      } else if (error.message.includes('duplicate key')) {
+        errorMessage = 'This appointment time is already booked. Please select a different time.';
+      } else if (error.message.includes('violates foreign key constraint')) {
+        errorMessage = 'The selected service is no longer available. Please choose a different service.';
+      }
+      
       toast({
         title: 'Error scheduling appointment',
-        description: error.message,
+        description: errorMessage,
         variant: 'destructive',
       });
     } finally {
@@ -344,62 +288,49 @@ const AppointmentBooking = () => {
           <CardHeader>
             <CardTitle className="text-2xl">Schedule an Appointment</CardTitle>
             <CardDescription>
-              Book a time with our tech support specialists to resolve your issues
+              Choose how you'd like to book your appointment with our tech support specialists
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Guest information section (only shown if not logged in) */}
-              {!user && (
-                <div className="space-y-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                  <h3 className="font-medium text-blue-800 dark:text-blue-300">Your Contact Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="flex items-center">
-                        <User className="h-4 w-4 mr-1" />
-                        Full Name *
-                      </Label>
-                      <Input
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="John Doe"
-                        required
-                      />
+            {!user ? (
+              <div className="space-y-6">
+                <div className="p-6 border rounded-lg bg-blue-50 dark:bg-blue-900/20 text-center">
+                  <h3 className="text-xl font-semibold mb-4">Two Ways to Book Your Appointment</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    {/* Option 1: Call to book */}
+                    <div className="p-6 border rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                      <Phone className="h-12 w-12 mx-auto mb-4 text-blue-500" />
+                      <h4 className="text-lg font-medium mb-2">Call Us</h4>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">Speak directly with our team to book your appointment</p>
+                      <p className="font-medium text-lg text-blue-600 dark:text-blue-400">(570) 535-2472</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Available Mon-Fri: 9AM-5PM</p>
+                      <Button 
+                        variant="outline" 
+                        className="mt-4 w-full"
+                        onClick={() => navigate('/contact')}
+                      >
+                        Contact Details
+                      </Button>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="flex items-center">
-                        <Mail className="h-4 w-4 mr-1" />
-                        Email Address *
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="john@example.com"
-                        required
-                      />
+                    
+                    {/* Option 2: Sign in to book online */}
+                    <div className="p-6 border rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                      <User className="h-12 w-12 mx-auto mb-4 text-blue-500" />
+                      <h4 className="text-lg font-medium mb-2">Book Online</h4>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">Sign in to book and manage your appointments online</p>
+                      <Button 
+                        className="mt-4 w-full"
+                        onClick={() => navigate('/auth?redirect=' + encodeURIComponent(window.location.pathname))}
+                      >
+                        Sign In to Book
+                      </Button>
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="flex items-center">
-                      <Phone className="h-4 w-4 mr-1" />
-                      Phone Number (Optional)
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="(570) 535-2472"
-                    />
-                  </div>
-                  <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">
-                    <strong>Note:</strong> Creating an account is not required to book an appointment, but having an account allows you to track all your appointments and service requests.
-                  </p>
                 </div>
-              )}
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
               
               <div className="space-y-2">
                 <Label htmlFor="service">Select Service</Label>
@@ -434,9 +365,9 @@ const AppointmentBooking = () => {
                     Duration: {services.find(s => s.id === selectedService)?.duration} minutes
                   </p>
                 )}
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="date">Select Date</Label>
                   <Popover>
@@ -486,23 +417,24 @@ const AppointmentBooking = () => {
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="issue">Describe Your Issue</Label>
-                <Textarea
-                  id="issue"
-                  value={issue}
-                  onChange={(e) => setIssue(e.target.value)}
-                  placeholder="Please describe the issue you're experiencing..."
-                  className="min-h-[100px]"
-                />
-              </div>
-              
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Scheduling..." : "Schedule Appointment"}
-              </Button>
-            </form>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="issue">Describe Your Issue</Label>
+                  <Textarea
+                    id="issue"
+                    value={issue}
+                    onChange={(e) => setIssue(e.target.value)}
+                    placeholder="Please describe the issue you're experiencing..."
+                    className="min-h-[100px]"
+                  />
+                </div>
+                
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? "Scheduling..." : "Schedule Appointment"}
+                </Button>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>

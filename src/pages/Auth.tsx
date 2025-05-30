@@ -23,8 +23,47 @@ const Auth = () => {
   const { toast } = useToast();
   const { t } = useTranslation();
 
+  const validateForm = () => {
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      toast({
+        title: t('auth.errors.invalidEmail'),
+        variant: 'destructive',
+      });
+      return false;
+    }
+
+    // Password validation (at least 6 characters)
+    if (password.length < 6) {
+      toast({
+        title: t('auth.errors.shortPassword'),
+        description: t('auth.errors.passwordRequirements'),
+        variant: 'destructive',
+      });
+      return false;
+    }
+
+    // For sign up, validate full name
+    if (!isLogin && (!fullName || fullName.trim().length < 2)) {
+      toast({
+        title: t('auth.errors.invalidName'),
+        variant: 'destructive',
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
+    }
+    
     setLoading(true);
     setVerificationError(false);
 
@@ -137,6 +176,8 @@ const Auth = () => {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required={!isLogin}
+                minLength={2}
+                maxLength={100}
                 placeholder={t('auth.form.fullNamePlaceholder')}
                 className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
               />
@@ -152,6 +193,8 @@ const Auth = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder={t('auth.form.emailPlaceholder')}
+              pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+              title="Please enter a valid email address"
               className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
             />
           </div>
@@ -164,9 +207,16 @@ const Auth = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={6}
               placeholder={t('auth.form.passwordPlaceholder')}
+              title="Password must be at least 6 characters long"
               className="mb-2 bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100"
             />
+            {!isLogin && (
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t('auth.form.passwordRequirements')}
+              </p>
+            )}
             {isLogin && (
               <div className="text-right">
                 <Link to="/forgot-password" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
